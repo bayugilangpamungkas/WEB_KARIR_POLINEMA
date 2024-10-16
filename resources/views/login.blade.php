@@ -60,9 +60,12 @@
                         <!-- Register button -->
                         <div class="flex items-center justify-between pb-4">
                             <p class="mb-0 me-2">Don't have an account?</p>
-                            <button type="button" class="rounded border-2 px-6 py-2 text-xs font-medium uppercase leading-normal text-danger border-violet-400">
-                                Register
-                            </button>
+                            <a href="/register">
+                                <button type="button" class="rounded border-2 px-6 py-2 text-xs font-medium uppercase leading-normal text-danger border-violet-400">
+                                    Register
+                                </button>
+                            </a>
+
                         </div>
                     </form>
                 </div>
@@ -72,7 +75,7 @@
             <div class="hidden lg:flex items-center lg:w-6/12" style="background: #9ECAE1;">
                 <div class="px-4 py-6 text-white md:p-12">
                     <h3 class="mb-10 text-2xl font-extrabold text-center" style="color: #1C3166;">
-                        Sistem Informasi JPC Polinema
+                        Sistem Informasi Karir JPC Polinema
                     </h3>
                     <div class="flex justify-center">
                         <img src="{{ asset('/asset/images/bg-login.png') }}" alt="image" class="w-3/4 h-auto">
