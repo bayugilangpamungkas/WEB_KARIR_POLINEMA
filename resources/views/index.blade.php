@@ -49,7 +49,7 @@
                             </a>
                             <div class="hidden sm:flex">
                                 <a class="rounded-md bg-gray-900 px-5 py-2.5 text-sm font-medium text-white shadow-600"
-                                    href="#">
+                                    href="/register">
                                     Sign Up
                                 </a>
                             </div>
@@ -160,8 +160,8 @@
 
             <!-- Kolom Kanan (Gambar) -->
             <div class="flex items-center justify-center">
-                <img src="{{ asset('/asset/images/image1.jpg') }}" alt="Deskripsi Gambar"
-                    class="w-[400px] h-[300px] object-cover rounded-lg shadow-lg" />
+                <img src="{{ asset('/asset/images/image1.png') }}" alt="Deskripsi Gambar"
+                    class="w-[400px] h-[300px] object-cover rounded-lg" />
             </div>
         </div>
 
@@ -169,8 +169,8 @@
         <div class="grid grid-cols-2 gap-10 mt-16">
             <!-- Kolom Kiri (Gambar Laptop) -->
             <div class="flex items-center justify-center">
-                <img src="{{ asset('/asset/images/image2.jpg') }}" alt="Deskripsi Gambar"
-                    class="w-[400px] h-[300px] object-cover rounded-lg shadow-lg" />
+                <img src="{{ asset('/asset/images/image2.png') }}" alt="Deskripsi Gambar"
+                    class="w-[400px] h-[300px] object-cover rounded-lg" />
             </div>
 
             <!-- Kolom Kanan -->
