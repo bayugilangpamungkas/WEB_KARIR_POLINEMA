@@ -18,7 +18,8 @@
                 <div class="md:mx-6 md:p-8">
                     <!-- Logo -->
                     <div class="text-left">
-                        <img class="mx-auto md:w-28 w-full h-auto" src="{{ asset('/asset/images/logo-polinema.webp') }}" alt="polinema">
+                        <img class="mx-auto md:w-28 w-full h-auto" src="{{ asset('/asset/images/logo-polinema.webp') }}"
+                            alt="polinema">
                         <h4 class="mt-6 pb-1 text-xl font-semibold">Sign In</h4>
                         <p class="mt-1 mb-7 text-gray-500">Please login to your account</p>
                     </div>
@@ -29,12 +30,9 @@
                             <span class="absolute left-2 top-2.5 text-gray-500">
                                 <i class="fas fa-envelope"></i>
                             </span>
-                            <input
-                                type="text"
+                            <input type="text"
                                 class="border p-2 pl-8 w-full rounded focus:border-blue-500 focus:ring focus:ring-blue-200 focus:outline-none"
-                                id="email"
-                                placeholder="Email/NIM"
-                                required />
+                                id="email" placeholder="Email/NIM" required />
                         </div>
 
                         <!-- Password input -->
@@ -42,17 +40,15 @@
                             <span class="absolute left-2 top-2.5 text-gray-500">
                                 <i class="fas fa-lock"></i>
                             </span>
-                            <input
-                                type="password"
+                            <input type="password"
                                 class="border p-2 pl-8 w-full rounded focus:border-blue-500 focus:ring focus:ring-blue-200 focus:outline-none"
-                                id="password"
-                                placeholder="Password"
-                                required />
+                                id="password" placeholder="Password" required />
                         </div>
 
                         <!-- Submit button -->
                         <div class="mb-8 text-center">
-                            <button class="mb-3 w-full rounded px-6 py-2.5 text-xs font-medium uppercase leading-normal text-white shadow-md bg-gradient-to-r from-violet-600 to-indigo-600">
+                            <button
+                                class="mb-3 w-full rounded px-6 py-2.5 text-xs font-medium uppercase leading-normal text-white shadow-md bg-gradient-to-r from-violet-600 to-indigo-600">
                                 Log in
                             </button>
                         </div>
@@ -60,7 +56,8 @@
                         <!-- Register button -->
                         <div class="flex items-center justify-between pb-4">
                             <p class="mb-0 me-2">Don't have an account?</p>
-                            <button type="button" class="rounded border-2 px-6 py-2 text-xs font-medium uppercase leading-normal text-danger border-violet-400">
+                            <button type="button"
+                                class="rounded border-2 px-6 py-2 text-xs font-medium uppercase leading-normal text-danger border-violet-400">
                                 Register
                             </button>
                         </div>
