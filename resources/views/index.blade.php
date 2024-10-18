@@ -44,7 +44,7 @@
                     <div class="flex items-center gap-4">
                         <div class="sm:flex sm:gap-4">
                             <a class="rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-black shadow"
-                                href="#">
+                                href="/login">
                                 Login
                             </a>
                             <div class="hidden sm:flex">
