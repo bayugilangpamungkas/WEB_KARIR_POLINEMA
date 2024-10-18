@@ -40,7 +40,7 @@
                             </label>
 
                             <input type="text" id="FirstName" name="first_name"
-                                class="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm" />
+                                class="p-2 mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm" />
                         </div>
 
                         <div class="col-span-6 sm:col-span-3">
@@ -49,21 +49,21 @@
                             </label>
 
                             <input type="text" id="LastName" name="last_name"
-                                class="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm" />
+                                class=" p-2 mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm" />
                         </div>
 
                         <div class="col-span-6">
                             <label for="Email" class="block text-sm font-medium text-gray-700"> Email </label>
 
                             <input type="email" id="Email" name="email"
-                                class="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm" />
+                                class="p-2 mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm" />
                         </div>
 
                         <div class="col-span-6 sm:col-span-3">
                             <label for="Password" class="block text-sm font-medium text-gray-700"> Password </label>
 
                             <input type="password" id="Password" name="password"
-                                class="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm" />
+                                class="p-2 mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm" />
                         </div>
 
                         <div class="col-span-6 sm:col-span-3">
@@ -72,13 +72,13 @@
                             </label>
 
                             <input type="password" id="PasswordConfirmation" name="password_confirmation"
-                                class="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm" />
+                                class="p-2 mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm" />
                         </div>
 
                         <div class="col-span-6">
                             <label for="MarketingAccept" class="flex gap-4">
                                 <input type="checkbox" id="MarketingAccept" name="marketing_accept"
-                                    class="size-5 rounded-md border-gray-200 bg-white shadow-sm" />
+                                    class=" p-2 size-5 rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm" />
 
                                 <span class="text-sm text-gray-700">
                                     I want to receive emails about events, product updates and company announcements.

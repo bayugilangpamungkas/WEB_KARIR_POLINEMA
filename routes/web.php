@@ -14,3 +14,6 @@ Route::get('/register', function () {
 Route::get('/login', function () {
     return view('login');
 });
+Route::get('/webinar', function () {
+    return view('webinar');
+});

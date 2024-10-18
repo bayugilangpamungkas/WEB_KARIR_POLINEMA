@@ -38,7 +38,7 @@
                                 <a class="text-gray-500 transition hover:text-gray-500/75" href="#"> Lowongan </a>
                             </li>
                             <li>
-                                <a class="text-gray-500 transition hover:text-gray-500/75" href="#"> Webinar </a>
+                                <a class="text-gray-500 transition hover:text-gray-500/75" href="/webinar"> Webinar </a>
                             </li>
                         </ul>
                     </nav>
