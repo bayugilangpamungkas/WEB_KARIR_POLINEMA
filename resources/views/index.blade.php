@@ -27,18 +27,17 @@
                     <nav aria-label="Global" class="hidden md:block">
                         <ul class="flex items-center gap-6 text-sm">
                             <li>
-                                <a class="text-gray-500 transition hover:text-gray-500/75" href="#"> Beranda </a>
+                                <a class="text-gray-500 transition hover:text-gray-500/75" href="#">Beranda</a>
                             </li>
-
                             <li>
-                                <a class="text-gray-500 transition hover:text-gray-500/75" href="#"> Bimbingan
+                                <a class="text-gray-500 transition hover:text-gray-500/75" href="#">Bimbingan
                                     Karir </a>
                             </li>
                             <li>
-                                <a class="text-gray-500 transition hover:text-gray-500/75" href="#"> Lowongan </a>
+                                <a class="text-gray-500 transition hover:text-gray-500/75" href="#">Lowongan</a>
                             </li>
                             <li>
-                                <a class="text-gray-500 transition hover:text-gray-500/75" href="/webinar"> Webinar </a>
+                                <a class="text-gray-500 transition hover:text-gray-500/75" href="/webinar">Webinar</a>
                             </li>
                         </ul>
                     </nav>
@@ -194,89 +193,82 @@
     </div>
 
     <!-- Articel -->
-    <section class="bg-gray-900 text-white mb-56">
+    <section class="bg-gray-900 text-white mb-56 ">
         <div class="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
             <div class="mx-auto max-w-lg text-center">
-                <h2 class="text-3xl font-bold sm:text-4xl">Recent articles</h2>
-
-                <p class="mt-4 text-gray-300">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequuntur aliquam doloribus
-                    nesciunt eos fugiat. Vitae aperiam fugit consequuntur saepe laborum.
-                </p>
+                <h2 class="text-2xl font-bold sm:text-3xl mb-10">Recent articles</h2>
             </div>
 
-            <div class="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+            <div class="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 text-center">
+                <!-- Card 1 -->
                 <a class="block rounded-xl border border-gray-800 p-8 shadow-xl transition hover:border-pink-500/10 hover:shadow-pink-500/10"
                     href="#">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="size-10 text-pink-500" fill="none"
-                        viewBox="0 0 24 24" stroke="currentColor">
-                        <path d="M12 14l9-5-9-5-9 5 9 5z" />
-                        <path
-                            d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
-                    </svg>
-
-                    <h2 class="mt-4 text-xl font-bold text-white">Digital campaigns</h2>
-
-                    <p class="mt-1 text-sm text-gray-300">
-                        How to Improve Soft Skills for Your Career!
-                    </p>
+                    <div class="flex justify-center items-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-pink-500" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path d="M12 14l9-5-9-5-9 5 9 5z" />
+                            <path
+                                d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
+                        </svg>
+                    </div>
+                    <h2 class="mt-4 text-xl font-bold text-white">Panduan Meningkatkan Produktivitas di Tempat Kerja
+                    </h2>
                 </a>
 
+                <!-- Card 2 -->
                 <a class="block rounded-xl border border-gray-800 p-8 shadow-xl transition hover:border-pink-500/10 hover:shadow-pink-500/10"
                     href="#">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="size-10 text-pink-500" fill="none"
-                        viewBox="0 0 24 24" stroke="currentColor">
-                        <path d="M12 14l9-5-9-5-9 5 9 5z" />
-                        <path
-                            d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
-                    </svg>
-
-                    <h2 class="mt-4 text-xl font-bold text-white">Digital campaigns</h2>
-
-                    <p class="mt-1 text-sm text-gray-300">
-                        How to Build a Quality Network and Improve Your Career After Attending a Webinar!
-                    </p>
+                    <div class="flex justify-center items-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-pink-500" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path d="M12 14l9-5-9-5-9 5 9 5z" />
+                            <path
+                                d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
+                        </svg>
+                    </div>
+                    <h2 class="mt-4 text-xl font-bold text-white">Mengenal Teknologi Lebih Dalam, untuk Memperluas
+                        Karir Anda!</h2>
                 </a>
 
+                <!-- Card 3 -->
                 <a class="block rounded-xl border border-gray-800 p-8 shadow-xl transition hover:border-pink-500/10 hover:shadow-pink-500/10"
                     href="#">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="size-10 text-pink-500" fill="none"
-                        viewBox="0 0 24 24" stroke="currentColor">
-                        <path d="M12 14l9-5-9-5-9 5 9 5z" />
-                        <path
-                            d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
-                    </svg>
-
-                    <h2 class="mt-4 text-xl font-bold text-white">Digital campaigns</h2>
-
-                    <p class="mt-1 text-sm text-gray-300">
-                        Dive deeper into technology to expand your career, and register as a webinar participant!
-                    </p>
+                    <div class="flex justify-center items-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-pink-500" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path d="M12 14l9-5-9-5-9 5 9 5z" />
+                            <path
+                                d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
+                        </svg>
+                    </div>
+                    <h2 class="mt-4 text-xl font-bold text-white">Bangun Jaringan Berkualitas dan Tingkatkan Karir
+                        Kamu!</h2>
                 </a>
             </div>
+
     </section>
 
 
     <!-- TESTIMONIALS -->
     <section class="bg-white">
         <div class="mx-auto max-w-screen-xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
-            <h2 class="text-center text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
-                Review Testimonials</h2>
-            <p class="mt-6 text-center text-xl text-gray-500">See what our customers are saying</p>
+            <h2 class="text-center text-3xl font-bold tracking-tight text-gray-900 sm:text-3xl">Review Testimonials
+            </h2>
+            <p class="mt-6 text-center text-xl text-gray-500">See what our testers found.</p>
 
             <div class="mt-8 grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-8">
+                <!-- Testimonial 1 -->
                 <blockquote class="rounded-lg bg-gray-50 p-6 shadow-sm sm:p-8">
                     <div class="flex items-center gap-4">
-                        <img alt=""
-                            src="https://images.unsplash.com/photo-1595152772835-219674b2a8a6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80"
+                        <img alt="Profile 1"
+                            src="https://images.unsplash.com/photo-1595152772835-219674b2a8a6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1180&q=80"
                             class="size-14 rounded-full object-cover" />
-
                         <div>
                             <div class="flex justify-center gap-0.5 text-green-500">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="size-5" viewBox="0 0 20 20"
@@ -305,24 +297,20 @@
                                         d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                                 </svg>
                             </div>
-
                             <p class="mt-0.5 text-lg font-medium text-gray-900">Paul Starr</p>
                         </div>
                     </div>
-
                     <p class="mt-4 text-gray-700">
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa sit rerum incidunt, a
-                        consequuntur recusandae ab saepe illo est quia obcaecati neque quibusdam eius accusamus
-                        error officiis atque voluptates magnam!
+                        Setelah mengikuti beberapa webinar dari website karir ini, saya bisa memperbaiki resume...
                     </p>
                 </blockquote>
 
+                <!-- Testimonial 2 -->
                 <blockquote class="rounded-lg bg-gray-50 p-6 shadow-sm sm:p-8">
                     <div class="flex items-center gap-4">
-                        <img alt=""
-                            src="https://images.unsplash.com/photo-1595152772835-219674b2a8a6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80"
+                        <img alt="Profile 2"
+                            src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
                             class="size-14 rounded-full object-cover" />
-
                         <div>
                             <div class="flex justify-center gap-0.5 text-green-500">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="size-5" viewBox="0 0 20 20"
@@ -351,24 +339,20 @@
                                         d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                                 </svg>
                             </div>
-
-                            <p class="mt-0.5 text-lg font-medium text-gray-900">Paul Starr</p>
+                            <p class="mt-0.5 text-lg font-medium text-gray-900">Jane Doe</p>
                         </div>
                     </div>
-
                     <p class="mt-4 text-gray-700">
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa sit rerum incidunt, a
-                        consequuntur recusandae ab saepe illo est quia obcaecati neque quibusdam eius accusamus
-                        error officiis atque voluptates magnam!
+                        Pengalaman saya menggunakan sistem informasi ini sangat memuaskan, fiturnya sangat lengkap...
                     </p>
                 </blockquote>
 
+                <!-- Testimonial 3 -->
                 <blockquote class="rounded-lg bg-gray-50 p-6 shadow-sm sm:p-8">
                     <div class="flex items-center gap-4">
-                        <img alt=""
-                            src="https://images.unsplash.com/photo-1595152772835-219674b2a8a6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80"
+                        <img alt="Profile 3"
+                            src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
                             class="size-14 rounded-full object-cover" />
-
                         <div>
                             <div class="flex justify-center gap-0.5 text-green-500">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="size-5" viewBox="0 0 20 20"
@@ -397,19 +381,18 @@
                                         d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                                 </svg>
                             </div>
-
-                            <p class="mt-0.5 text-lg font-medium text-gray-900">Paul Starr</p>
+                            <p class="mt-0.5 text-lg font-medium text-gray-900">John Smith</p>
                         </div>
                     </div>
                     <p class="mt-4 text-gray-700">
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa sit rerum incidunt, a
-                        consequuntur recusandae ab saepe illo est quia obcaecati neque quibusdam eius accusamus
-                        error officiis atque voluptates magnam!
+                        Sistem ini sangat membantu dalam meningkatkan efisiensi kerja di kantor saya...
                     </p>
                 </blockquote>
             </div>
         </div>
     </section>
+
+
 
 
     <!-- Banner Slider -->
