@@ -8,14 +8,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Auth\Events\Registered;
-use Illuminate\Container\Attributes\Auth;
 
 class RegisteredUserController extends Controller
 {
     //
     public function create()
     {
-        return view('auth.register');
+        return view('register');
     }
 
     public function store(Request $request)
@@ -26,15 +25,17 @@ class RegisteredUserController extends Controller
 
         event(new Registered($user));
 
-        auth()->login($user);
+        // auth()->login($user);
 
-        return redirect()->route('admin.dashboard');
+        // TEST ROUTE (BLANK)
+        return redirect()->route('user.dashboard');
     }
 
     protected function validator(array $data)
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
+            'nim' => ['required', 'string'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -44,8 +45,10 @@ class RegisteredUserController extends Controller
     {
         return User::create([
             'name' => $data['name'],
+            'nim' => $data['nim'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'role' => 'user',
         ]);
     }
 }

@@ -40,8 +40,17 @@
                                 class="w-full p-2 mt-1 text-sm text-gray-700 bg-white border-2 border-blue-200 rounded-md shadow-sm focus:ring focus:ring-blue-200 focus:outline-none"
                                 value="{{ old('name') }}" required autofocus>
                             @error('name')
-                                <span class="text-sm text-red-500">{{ $message }}</span>
+                            <span class="text-sm text-red-500">{{ $message }}</span>
                             @enderror
+                        </div>
+
+                        <div class=" col-span-6 sm:col-span-3">
+                            <label for="nim" class="block text-sm font-medium text-gray-700">
+                                NIM
+                            </label>
+
+                            <input type="text" id="nim" name="nim"
+                                class="p-2 mt-1 w-full border-2 rounded-md border-blue-200 bg-white text-sm text-gray-700 shadow-sm focus:ring focus:ring-blue-200 focus:outline-none" />
                         </div>
 
                         <!-- Email -->
@@ -51,7 +60,7 @@
                                 class="w-full p-2 mt-1 text-sm text-gray-700 bg-white border-2 border-blue-200 rounded-md shadow-sm focus:ring focus:ring-blue-200 focus:outline-none"
                                 value="{{ old('email') }}" required>
                             @error('email')
-                                <span class="text-sm text-red-500">{{ $message }}</span>
+                            <span class="text-sm text-red-500">{{ $message }}</span>
                             @enderror
                         </div>
 
@@ -62,7 +71,7 @@
                                 class="w-full p-2 mt-1 text-sm text-gray-700 bg-white border-2 border-blue-200 rounded-md shadow-sm focus:ring focus:ring-blue-200 focus:outline-none"
                                 required>
                             @error('password')
-                                <span class="text-sm text-red-500">{{ $message }}</span>
+                            <span class="text-sm text-red-500">{{ $message }}</span>
                             @enderror
                         </div>
 
