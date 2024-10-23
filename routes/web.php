@@ -5,7 +5,8 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\MateriController;
 use App\Http\Controllers\TopikController;
-use App\Models\Materi;
+
+use App\Http\Middleware\AdminMiddleware;
 
 // Route untuk tampilan halaman depan
 Route::get('/', function () {
@@ -29,7 +30,7 @@ Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 // Route untuk dashboard admin
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', AdminMiddleware::class])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
 
     // Rute untuk Topik
