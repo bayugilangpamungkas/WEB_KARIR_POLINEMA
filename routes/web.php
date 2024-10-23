@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\MateriController;
 use App\Http\Controllers\TopikController;
+use App\Models\Materi;
 
 // Route untuk tampilan halaman depan
 Route::get('/', function () {
@@ -44,5 +45,10 @@ Route::middleware('auth')->group(function () {
     // Rute untuk Materi
     Route::prefix('admin/materi')->name('admin.materi.')->group(function () {
         Route::get('/', [MateriController::class, 'index'])->name('index');
+        Route::get('/create', [MateriController::class, 'create'])->name('create');
+        Route::post('/', [MateriController::class, 'store'])->name('store');
+        Route::get('/{id}/edit', [MateriController::class, 'edit'])->name('edit');
+        Route::put('/{id}', [MateriController::class, 'update'])->name('update');
+        Route::delete('/{id}', [MateriController::class, 'destroy'])->name('destroy');
     });
 });
