@@ -17,6 +17,15 @@
             }
         }
 
+        "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "Database\\Factories\\": "database/factories/",
+            "Database\\Seeders\\": "database/seeders/"
+        }
+    },
+
+
         .logo {
             animation: float 4s ease-in-out infinite;
         }

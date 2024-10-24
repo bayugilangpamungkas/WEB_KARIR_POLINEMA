@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\UserController;
 
 
 Route::get('/', function () {
@@ -36,3 +37,12 @@ Route::prefix('admin')->group(function () {
      Route::put('/materi/{id}', [AdminController::class, 'updateMateri'])->name('admin.materi.update');
      Route::delete('/materi/{id}', [AdminController::class, 'deleteMateri'])->name('admin.materi.delete');
 });
+
+// Route untuk User
+Route::prefix('user')->group(function () {
+    Route::get('/topik', [UserController::class, 'indexTopik'])->name('user.topik.index');
+    Route::get('/topik/{id}', [UserController::class, 'showTopik'])->name('user.topik.show');
+    Route::get('/materi', [UserController::class, 'indexMateri'])->name('user.materi.index');
+    Route::get('/materi/{id}', [UserController::class, 'showMateri'])->name('user.materi.show');
+});
+
