@@ -24,7 +24,8 @@
                         <p class="mt-1 mb-7 text-gray-500">Please login to your account</p>
                     </div>
 
-                    <form>
+                    <form method="POST" action="{{ route('login') }}">
+                        @csrf
                         <!-- Email input -->
                         <div class="relative mb-4">
                             <span class="absolute left-2 top-2.5 text-gray-500">
@@ -32,7 +33,7 @@
                             </span>
                             <input type="text"
                                 class="border p-2 pl-8 w-full rounded focus:border-blue-500 focus:ring focus:ring-blue-200 focus:outline-none"
-                                id="email" placeholder="Email/NIM" required />
+                                id="email" name="email" placeholder="Email" required />
                         </div>
 
                         <!-- Password input -->
@@ -42,12 +43,12 @@
                             </span>
                             <input type="password"
                                 class="border p-2 pl-8 w-full rounded focus:border-blue-500 focus:ring focus:ring-blue-200 focus:outline-none"
-                                id="password" placeholder="Password" required />
+                                id="password" name="password" placeholder="Password" required />
                         </div>
 
                         <!-- Submit button -->
                         <div class="mb-8 text-center">
-                            <button
+                            <button type="submit"
                                 class="mb-3 w-full rounded px-6 py-2.5 text-xs font-medium uppercase leading-normal text-white shadow-md bg-gradient-to-r from-violet-600 to-indigo-600">
                                 Log in
                             </button>

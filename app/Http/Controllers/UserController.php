@@ -38,13 +38,13 @@ class UserController extends Controller
     //     return view('user.profile', compact('user'));
     // }
 
-    public function profile()
-{
-    $user = Auth::user(); // Pastikan Auth::user() tidak null
-    if (!$user) {
-        return redirect()->route('login'); // Redirect ke halaman login jika user tidak ada
-    }
+    // public function profile()
+    // {
+    //     $user = Auth::user(); // Pastikan Auth::user() tidak null
+    //     if (!$user) {
+    //         return redirect()->route('login'); // Redirect ke halaman login jika user tidak ada
+    //     }
 
-    return view('user.profile', compact('user'));
-}
+    //     return view('user.profile', compact('user'));
+    // }
 }
