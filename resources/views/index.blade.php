@@ -29,7 +29,6 @@
                             <li>
                                 <a class="text-gray-500 transition hover:text-gray-500/75" href="#"> Beranda </a>
                             </li>
-
                             <li>
                                 <a class="text-gray-500 transition hover:text-gray-500/75" href="#"> Job Fair </a>
                             </li>
@@ -37,11 +36,14 @@
                                 <a class="text-gray-500 transition hover:text-gray-500/75" href="#"> Lowongan </a>
                             </li>
                             <li>
+                                <a class="text-gray-500 transition hover:text-gray-500/75" href="/topik"> Karir </a> <!-- Tambahan "Karir" -->
+                            </li>
+                            <li>
                                 <a class="text-gray-500 transition hover:text-gray-500/75" href="#"> Webinar </a>
                             </li>
                         </ul>
                     </nav>
-                    <div class="flex items-center gap-4">
+                                        <div class="flex items-center gap-4">
                         <div class="sm:flex sm:gap-4">
                             <a class="rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-black shadow"
                                 href="/login">
