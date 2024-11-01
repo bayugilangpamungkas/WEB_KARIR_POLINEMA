@@ -1,142 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel</title>
-    @vite('resources/css/app.css')
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-    <style>
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-        }
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        "autoload": {
-        "psr-4": {
-            "App\\": "app/",
-            "Database\\Factories\\": "database/factories/",
-            "Database\\Seeders\\": "database/seeders/"
-        }
-    },
+    <title>{{ config('app.name', 'Laravel') }}</title>
 
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
-        .logo {
-            animation: float 4s ease-in-out infinite;
-        }
-
-        #sidebar {
-            transition: transform 0.3s ease-in-out;
-            transform: translateX(0);
-        }
-
-        #sidebar.hidden {
-            transform: translateX(-100%);
-        }
-
-        #hamburger {
-            cursor: pointer;
-            margin-right: 20px;
-        }
-
-        /* Style for dropdown arrow */
-        .rotate-180 {
-            transform: rotate(180deg);
-        }
-    </style>
+    <!-- Scripts -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="bg-gray-100 flex min-h-screen font-body">
-    <!-- Sidebar -->
-    <aside id="sidebar" class="bg-white text-gray-800 w-64 p-6 shadow-lg space-y-4">
-        <div class="flex items-center justify-center mb-8">
-            <img src="/asset/images/logo_polinema.png" alt="Logo" class="w-20 h-20 rounded-full logo">
-        </div>
-        <nav class="space-y-4">
-            <!-- Dashboard Button -->
-            <a href="{{ route('admin.dashboard') }}" class="flex items-center py-2 px-4 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-800 transition duration-200 ease-in-out transform hover:scale-105 shadow-sm">
-                <i class="fas fa-home mr-2"></i>
-                <span>Dashboard</span>
-            </a>
+<body class="font-sans antialiased">
+    <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
+        @include('layouts.navigation')
 
-            <!-- List Peserta Button -->
-            <a href="#" class="flex items-center py-2 px-4 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-800 transition duration-200 ease-in-out transform hover:scale-105 shadow-sm">
-                <i class="fas fa-users mr-2"></i>
-                <span>List Peserta</span>
-            </a>
-
-            <!-- Webinar Dropdown -->
-            <div>
-                <button id="webinarToggle" class="w-full flex items-center justify-between py-2 px-4 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-800 transition duration-200 ease-in-out transform hover:scale-105 shadow-sm">
-                    <div class="flex items-center">
-                        <i class="fas fa-video mr-2"></i>
-                        <span>Webinar</span>
-                    </div>
-                    <i id="arrow" class="fas fa-chevron-down transition-transform duration-300"></i>
-                </button>
-                <!-- Dropdown Content -->
-                <div id="webinarDropdown" class="hidden pl-6 space-y-2 mt-2">
-                    <a href="{{ route('admin.topik.index') }}" class="block py-2 px-4 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-800 transition">
-                        <i class="fas fa-book mr-2"></i> Topik
-                    </a>
-                    <a href="{{ route('admin.materi.index') }}" class="block py-2 px-4 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-800 transition">
-                        <i class="fas fa-file-alt mr-2"></i> Materi
-                    </a>
-                </div>
+        <!-- Page Heading -->
+        @isset($header)
+        <header class="bg-white dark:bg-gray-800 shadow">
+            <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                {{ $header }}
             </div>
-
-            <!-- Lowongan Button -->
-            <a href="#" class="flex items-center py-2 px-4 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-800 transition duration-200 ease-in-out transform hover:scale-105 shadow-sm">
-                <i class="fas fa-briefcase mr-2"></i>
-                <span>Lowongan</span>
-            </a>
-
-            <!-- Info Button -->
-            <a href="#" class="flex items-center py-2 px-4 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-800 transition duration-200 ease-in-out transform hover:scale-105 shadow-sm">
-                <i class="fas fa-question-circle mr-2"></i>
-                <span>Ini apa isinya?</span>
-            </a>
-        </nav>
-    </aside>
-
-    <!-- Main Content -->
-    <div class="flex-1 p-6">
-        <header class="flex justify-between items-center mb-6">
-            <button id="hamburger" class="text-gray-800 focus:outline-none">
-                <i class="fas fa-bars text-2xl"></i>
-            </button>
-            <h1 class="text-2xl font-bold text-primary">Selamat datang Super Admin!</h1>
         </header>
+        @endisset
 
-        <!-- Content Section -->
-        @yield('content')
+        <!-- Page Content -->
+        <main>
+            {{ $slot }}
+        </main>
     </div>
-
-    <!-- Optional JS Libraries -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>
-        const sidebar = document.getElementById('sidebar');
-        const hamburger = document.getElementById('hamburger');
-        const webinarToggle = document.getElementById('webinarToggle');
-        const webinarDropdown = document.getElementById('webinarDropdown');
-        const arrow = document.getElementById('arrow');
-
-        // Toggle sidebar on hamburger click
-        hamburger.addEventListener('click', () => {
-            sidebar.classList.toggle('hidden');
-        });
-
-        // Toggle dropdown for Webinar section
-        webinarToggle.addEventListener('click', () => {
-            webinarDropdown.classList.toggle('hidden');
-            arrow.classList.toggle('rotate-180'); // Rotate the arrow on click
-        });
-    </script>
 </body>
 
 </html>

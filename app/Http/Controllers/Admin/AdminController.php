@@ -1,27 +1,87 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\Materi;
-use App\Models\Topik;
-use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Str;
+use App\Models\Topik;
+use App\Models\Materi;
 
-class MateriController extends Controller
+class AdminController extends Controller
 {
+
     public function index()
+    {
+        return view('admin.dashboard'); // Mengembalikan tampilan dashboard
+    }
+
+    // CRUD untuk Topik
+    public function indexTopik()
+    {
+        $topiks = Topik::all();
+        return view('admin.topik.index', compact('topiks'));
+    }
+
+    public function createTopik()
+    {
+        return view('admin.topik.create');
+    }
+
+    public function storeTopik(Request $request)
+    {
+        $request->validate([
+            'judul_topik' => 'required|string|max:255',
+            'deskripsi_topik' => 'nullable|string',
+        ]);
+
+        Topik::create($request->only('judul_topik', 'deskripsi_topik'));
+
+        return redirect()->route('admin.topik.index')->with('success', 'Topik berhasil ditambahkan.');
+    }
+
+    public function editTopik($id)
+    {
+        $topik = Topik::findOrFail($id);
+        return view('admin.topik.edit', compact('topik'));
+    }
+
+    public function updateTopik(Request $request, $id)
+    {
+        $topik = Topik::findOrFail($id);
+
+        $request->validate([
+            'judul_topik' => 'required|string|max:255',
+            'deskripsi_topik' => 'nullable|string',
+        ]);
+
+        $topik->update($request->only('judul_topik', 'deskripsi_topik'));
+
+        return redirect()->route('admin.topik.index')->with('success', 'Topik berhasil diupdate.');
+    }
+
+    public function deleteTopik($id)
+    {
+        $topik = Topik::findOrFail($id);
+        $topik->delete();
+
+        return redirect()->route('admin.topik.index')->with('success', 'Topik berhasil dihapus.');
+    }
+
+    // CRUD untuk Materi
+    public function indexMateri()
     {
         $materis = Materi::with('topik')->get(); // Mengambil semua materi dengan relasi topik
         return view('admin.materi.index', compact('materis'));
     }
 
-    public function create()
+    public function createMateri()
     {
         $topiks = Topik::all(); // Ambil semua topik untuk dropdown
         return view('admin.materi.create', compact('topiks'));
     }
 
-    public function store(Request $request)
+    public function storeMateri(Request $request)
     {
         $request->validate([
             'topik_id' => 'required|exists:topiks,id',
@@ -42,14 +102,14 @@ class MateriController extends Controller
         return redirect()->route('admin.materi.index')->with('success', 'Materi berhasil ditambahkan.');
     }
 
-    public function edit($id)
+    public function editMateri($id)
     {
         $materi = Materi::findOrFail($id);
         $topiks = Topik::all(); // Ambil semua topik untuk dropdown
         return view('admin.materi.edit', compact('materi', 'topiks'));
     }
 
-    public function update(Request $request, $id)
+    public function updateMateri(Request $request, $id)
     {
         $materi = Materi::findOrFail($id);
 
@@ -72,7 +132,7 @@ class MateriController extends Controller
         return redirect()->route('admin.materi.index')->with('success', 'Materi berhasil diupdate.');
     }
 
-    public function destroy($id)
+    public function deleteMateri($id)
     {
         $materi = Materi::findOrFail($id);
         $materi->delete();

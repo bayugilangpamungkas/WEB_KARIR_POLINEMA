@@ -1,5 +1,5 @@
 <!-- resources/views/admin/materi/edit.blade.php -->
-@extends('layouts.app')
+@extends('admin.layouts.app')
 
 @section('content')
 <div class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">

@@ -21,7 +21,7 @@ class AdminMiddleware
             return $next($request);
         }
 
-        // Jika tidak, redirect ke halaman utama atau halaman lain
-        return redirect('/')->withErrors(['msg' => 'Akses ditolak.']);
+        // Redirect ke halaman utama jika bukan admin
+        return redirect('/')->with('error', 'Anda tidak memiliki akses admin.');
     }
 }

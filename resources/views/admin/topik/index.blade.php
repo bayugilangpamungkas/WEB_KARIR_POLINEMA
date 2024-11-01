@@ -1,5 +1,5 @@
 <!-- resources/views/admin/topik/index.blade.php -->
-@extends('layouts.app')
+@extends('admin.layouts.app')
 
 @section('content')
 <div class="container mx-auto p-8">

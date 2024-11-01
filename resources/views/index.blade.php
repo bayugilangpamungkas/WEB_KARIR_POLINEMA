@@ -29,13 +29,11 @@
                             <li>
                                 <a class="text-gray-500 transition hover:text-gray-500/75" href="#"> Beranda </a>
                             </li>
-
-                            <li>
-                                <a class="text-gray-500 transition hover:text-gray-500/75" href="/user/topik"> Bimbingan
-                                    Karir </a>
-                            </li>
                             <li>
                                 <a class="text-gray-500 transition hover:text-gray-500/75" href="#"> Lowongan </a>
+                            </li>
+                            <li>
+                                <a class="text-gray-500 transition hover:text-gray-500/75" href="/topik"> Karir </a>
                             </li>
                             <li>
                                 <a class="text-gray-500 transition hover:text-gray-500/75" href="#"> Webinar </a>
