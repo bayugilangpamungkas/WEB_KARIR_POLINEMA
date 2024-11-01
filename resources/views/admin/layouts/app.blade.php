@@ -11,9 +11,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         @keyframes float {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: translateY(0);
             }
+
             50% {
                 transform: translateY(-10px);
             }
@@ -93,16 +96,16 @@
     </aside>
 
     <!-- Main Content -->
-    <div class="flex-1 p-6 bg-gradient-to-r from-blue-200 to-blue-300 rounded-lg shadow-md">        <!-- Modern Header -->
+    <div class="flex-1 p-6 bg-gradient-to-r from-blue-200 to-blue-300 rounded-lg shadow-md"> <!-- Modern Header -->
         <header class="flex justify-between items-center bg-gradient-to-r from-blue-500 to-blue-700 p-4 shadow-md rounded-lg mb-6">
             <!-- Hamburger Menu for Sidebar -->
             <button id="hamburger" class="text-white focus:outline-none">
                 <i class="fas fa-bars text-2xl"></i>
             </button>
-        
+
             <!-- Welcome Title -->
             <h1 class="text-2xl font-bold text-white">Selamat datang, Super Admin!</h1>
-        
+
             <!-- Right Section: Search, Notifications, Profile -->
             <div class="flex items-center space-x-6">
                 <!-- Search Input -->
@@ -111,66 +114,70 @@
                         placeholder="Cari sesuatu...">
                     <i class="fas fa-search absolute left-3 top-3 text-gray-500"></i>
                 </div>
-        
+
                 <!-- Notification Icon -->
                 <div class="relative">
                     <i class="fas fa-bell text-2xl text-white cursor-pointer"></i>
                     <!-- Notification Badge -->
                     <span class="absolute top-0 right-0 bg-red-600 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">3</span>
                 </div>
-        
+
                 <!-- Profile Dropdown -->
                 <div class="relative">
-                    <button class="flex items-center focus:outline-none">
+                    <button class="flex items-center focus:outline-none" id="profileButton">
                         <img src="https://via.placeholder.com/40" alt="User" class="w-10 h-10 rounded-full">
-                        <span class="ml-2 text-white font-medium">Admin</span>
-                        <i class="fas fa-chevron-down ml-2 text-white"></i>
+                        <span class="ml-2 font-medium text-white">Admin</span>
+                        <i class="ml-2 text-white fas fa-chevron-down"></i>
                     </button>
-                    <!-- Dropdown Menu -->
-                    <div class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 hidden">
-                        <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Profile</a>
-                        <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Settings</a>
-                        <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Logout</a>
+                    <div class="absolute right-0 hidden w-48 mt-2 bg-white rounded-md shadow-lg" id="profileDropdown">
+                        <a href="/profile" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Profil Saya</a>
+                        {{-- <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Pengaturan</a> --}}
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <button type="submit" class="w-full px-4 py-2 text-left text-gray-800 hover:bg-gray-100">
+                                Logout
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>
         </header>
-        
+
         <!-- Content Section -->
         @yield('content')
 
-<!-- Footer Section -->
-<footer class="bg-gradient-to-r from-blue-600 to-blue-800 text-white p-4 mt-4">
-    <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
-        <p class="text-center md:text-left text-sm">
-            &copy; 2024 Your Company. All rights reserved.
-        </p>
-        <div class="space-x-4 mt-2 md:mt-0">
-            <a href="#" class="text-white hover:text-blue-300 transition duration-200">Privacy Policy</a>
-            <a href="#" class="text-white hover:text-blue-300 transition duration-200">Terms of Service</a>
-            <a href="#" class="text-white hover:text-blue-300 transition duration-200">Contact Us</a>
-        </div>
-        <div class="space-x-4 mt-4 md:mt-0 flex justify-center">
-            <!-- Facebook Icon -->
-            <a href="https://www.facebook.com/polinema/?locale=id_ID" class="text-blue-200 hover:text-white transition duration-200">
-                <i class="fab fa-facebook-f"></i>
-            </a>
-            <!-- Twitter Icon -->
-            <a href="https://x.com/polinema_campus" class="text-blue-400 hover:text-white transition duration-200">
-                <i class="fab fa-twitter"></i>
-            </a>
-            <!-- Instagram Icon -->
-            <a href="https://www.instagram.com/polinema_campus/" class="text-pink-500 hover:text-white transition duration-200">
-                <i class="fab fa-instagram"></i>
-            </a>
-            <!-- LinkedIn Icon -->
-            <a href="https://www.linkedin.com/school/polinema-joss/?originalSubdomain=id" class="text-blue-300 hover:text-white transition duration-200">
-                <i class="fab fa-linkedin-in"></i>
-            </a>
-        </div>
-    </div>
-</footer>
-    
+        <!-- Footer Section -->
+        <footer class="bg-gradient-to-r from-blue-600 to-blue-800 text-white p-4 mt-4">
+            <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
+                <p class="text-center md:text-left text-sm">
+                    &copy; 2024 Your Company. All rights reserved.
+                </p>
+                <div class="space-x-4 mt-2 md:mt-0">
+                    <a href="#" class="text-white hover:text-blue-300 transition duration-200">Privacy Policy</a>
+                    <a href="#" class="text-white hover:text-blue-300 transition duration-200">Terms of Service</a>
+                    <a href="#" class="text-white hover:text-blue-300 transition duration-200">Contact Us</a>
+                </div>
+                <div class="space-x-4 mt-4 md:mt-0 flex justify-center">
+                    <!-- Facebook Icon -->
+                    <a href="https://www.facebook.com/polinema/?locale=id_ID" class="text-blue-200 hover:text-white transition duration-200">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <!-- Twitter Icon -->
+                    <a href="https://x.com/polinema_campus" class="text-blue-400 hover:text-white transition duration-200">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <!-- Instagram Icon -->
+                    <a href="https://www.instagram.com/polinema_campus/" class="text-pink-500 hover:text-white transition duration-200">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <!-- LinkedIn Icon -->
+                    <a href="https://www.linkedin.com/school/polinema-joss/?originalSubdomain=id" class="text-blue-300 hover:text-white transition duration-200">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                </div>
+            </div>
+        </footer>
+
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -190,6 +197,18 @@
         webinarToggle.addEventListener('click', () => {
             webinarDropdown.classList.toggle('hidden');
             arrow.classList.toggle('rotate-180');
+        });
+
+        // Toggle profile dropdown
+        profileButton.addEventListener('click', () => {
+            profileDropdown.classList.toggle('hidden');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!profileButton.contains(e.target) && !profileDropdown.contains(e.target)) {
+                profileDropdown.classList.add('hidden');
+            }
         });
     </script>
 </body>

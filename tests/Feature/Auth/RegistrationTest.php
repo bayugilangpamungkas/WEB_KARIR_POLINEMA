@@ -1,11 +1,14 @@
 <?php
 
+<<<<<<< HEAD
 test('registration screen can be rendered', function () {
     $response = $this->get('/register');
 
     $response->assertStatus(200);
 });
 
+=======
+>>>>>>> origin/development
 test('new users can register', function () {
     $response = $this->post('/register', [
         'name' => 'Test User',
@@ -15,5 +18,9 @@ test('new users can register', function () {
     ]);
 
     $this->assertAuthenticated();
+<<<<<<< HEAD
     $response->assertRedirect(route('dashboard', absolute: false));
+=======
+    $response->assertNoContent();
+>>>>>>> origin/development
 });

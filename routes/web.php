@@ -1,32 +1,59 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AdminController;
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Middleware\UserMiddleware;
 use App\Http\Controllers\User\TopikController;
 use App\Http\Controllers\User\MateriController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisteredUserController;
+
+use App\Http\Controllers\Admin\AdminController;
 
 // Route untuk halaman utama
+// Route::get('/', function () {
+//     return view('index');
+// });
+
+// Route untuk dashboard, hanya bisa diakses oleh pengguna yang terautentikasi dan terverifikasi
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
+
+// Routes untuk profile, hanya bisa diakses oleh pengguna yang terautentikasi
+// Route::middleware('auth')->group(function () {
+//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+// });
+
+// Autentikasi Laravel
+require __DIR__ . '/auth.php';
+
+// Route untuk tampilan halaman depan
 Route::get('/', function () {
     return view('index');
 });
 
-// Route untuk dashboard, hanya bisa diakses oleh pengguna yang terautentikasi dan terverifikasi
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-// Routes untuk profile, hanya bisa diakses oleh pengguna yang terautentikasi
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+// Route untuk halaman register
+Route::get('/register', function () {
+    return view('register');
 });
 
-// Autentikasi Laravel
-require __DIR__.'/auth.php';
+// Route untuk tampilan halaman login
+Route::get('/login', function () {
+    return view('login');
+})->name('login');
+
+// Route untuk proses login
+Route::post('/login', [LoginController::class, 'login']);
+
+// Route untuk proses logout
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+// Route untuk menampilkan form register
+Route::get('/register', [RegisteredUserController::class, 'create'])->name('register');
+Route::post('/register', [RegisteredUserController::class, 'store']);
 
 // Routes untuk admin, menggunakan middleware AdminMiddleware
 Route::middleware(['auth', AdminMiddleware::class])->group(function () {
