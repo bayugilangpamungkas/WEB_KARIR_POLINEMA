@@ -61,7 +61,7 @@
                 <i class="fas fa-home mr-2 text-blue-300"></i>
                 <span>Dashboard</span>
             </a>
-            <a href="#" class="flex items-center py-2 px-4 rounded-lg bg-blue-700 hover:bg-blue-600 text-white transition duration-200 ease-in-out transform hover:scale-105 shadow-sm font-medium">
+            <a href="{{ route('admin.manageuser.index') }}" class="flex items-center py-2 px-4 rounded-lg bg-blue-700 hover:bg-blue-600 text-white transition duration-200 ease-in-out transform hover:scale-105 shadow-sm font-medium">
                 <i class="fas fa-users mr-2 text-green-300"></i>
                 <span>List Peserta</span>
             </a>

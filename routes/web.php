@@ -9,6 +9,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\UserManagementController;
 
 // Route untuk halaman utama
 // Route::get('/', function () {
@@ -75,6 +76,14 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
         Route::get('/materi/{id}/edit', [AdminController::class, 'editMateri'])->name('admin.materi.edit');
         Route::put('/materi/{id}', [AdminController::class, 'updateMateri'])->name('admin.materi.update');
         Route::delete('/materi/{id}', [AdminController::class, 'deleteMateri'])->name('admin.materi.delete');
+
+        // Routes untuk manajemen user oleh admin
+        Route::get('/list-user', [UserManagementController::class, 'index'])->name('admin.manageuser.index');
+        Route::get('/list-user/create', [UserManagementController::class, 'create'])->name('admin.manageuser.create');
+        Route::post('/list-user', [UserManagementController::class, 'store'])->name('admin.manageuser.store');
+        Route::get('/list-user/{id}/edit', [UserManagementController::class, 'edit'])->name('admin.manageuser.edit');
+        Route::put('/list-user/{id}', [UserManagementController::class, 'update'])->name('admin.manageuser.update');
+        Route::delete('/list-user/{id}', [UserManagementController::class, 'destroy'])->name('admin.manageuser.destroy');
     });
 });
 
