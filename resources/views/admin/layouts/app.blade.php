@@ -57,17 +57,20 @@
         <hr class="border-t border-blue-300 opacity-50">
 
         <nav class="space-y-4">
-            <a href="{{ route('admin.dashboard') }}" class="flex items-center py-2 px-4 rounded-lg bg-blue-700 hover:bg-blue-600 text-white transition duration-200 ease-in-out transform hover:scale-105 shadow-sm font-medium">
+            <a href="{{ route('admin.dashboard') }}"
+                class="flex items-center py-2 px-4 rounded-lg bg-blue-700 hover:bg-blue-600 text-white transition duration-200 ease-in-out transform hover:scale-105 shadow-sm font-medium">
                 <i class="fas fa-home mr-2 text-blue-300"></i>
                 <span>Dashboard</span>
             </a>
-            <a href="#" class="flex items-center py-2 px-4 rounded-lg bg-blue-700 hover:bg-blue-600 text-white transition duration-200 ease-in-out transform hover:scale-105 shadow-sm font-medium">
+            <a href="#"
+                class="flex items-center py-2 px-4 rounded-lg bg-blue-700 hover:bg-blue-600 text-white transition duration-200 ease-in-out transform hover:scale-105 shadow-sm font-medium">
                 <i class="fas fa-users mr-2 text-green-300"></i>
                 <span>List Peserta</span>
             </a>
             <hr class="border-t border-blue-300 opacity-50">
             <div>
-                <button id="webinarToggle" class="w-full flex items-center justify-between py-2 px-4 rounded-lg bg-blue-700 hover:bg-blue-600 text-white transition duration-200 ease-in-out transform hover:scale-105 shadow-sm font-medium">
+                <button id="webinarToggle"
+                    class="w-full flex items-center justify-between py-2 px-4 rounded-lg bg-blue-700 hover:bg-blue-600 text-white transition duration-200 ease-in-out transform hover:scale-105 shadow-sm font-medium">
                     <div class="flex items-center">
                         <i class="fas fa-graduation-cap mr-2 text-yellow-300"></i>
                         <span>Karir</span>
@@ -76,18 +79,22 @@
                 </button>
             </div>
             <div id="webinarDropdown" class="hidden pl-6 space-y-2 mt-2">
-                <a href="{{ route('admin.topik.index') }}" class="block py-2 px-4 rounded-lg bg-blue-600 hover:bg-blue-500 text-white transition font-medium">
+                <a href="{{ route('admin.topik.index') }}"
+                    class="block py-2 px-4 rounded-lg bg-blue-600 hover:bg-blue-500 text-white transition font-medium">
                     <i class="fas fa-book mr-2 text-purple-300"></i> Topik
                 </a>
-                <a href="{{ route('admin.materi.index') }}" class="block py-2 px-4 rounded-lg bg-blue-600 hover:bg-blue-500 text-white transition font-medium">
+                <a href="{{ route('admin.materi.index') }}"
+                    class="block py-2 px-4 rounded-lg bg-blue-600 hover:bg-blue-500 text-white transition font-medium">
                     <i class="fas fa-file-alt mr-2 text-pink-300"></i> Materi
                 </a>
             </div>
             <hr class="border-t border-blue-300 opacity-50">
-            <a href="#" class="flex items-center py-2 px-4 rounded-lg bg-blue-700 hover:bg-blue-600 text-white transition duration-200 ease-in-out transform hover:scale-105 shadow-sm font-medium">
+            <a href="{{ route('admin.lowongan.index') }}"
+                class="flex items-center py-2 px-4 rounded-lg bg-blue-700 hover:bg-blue-600 text-white transition duration-200 ease-in-out transform hover:scale-105 shadow-sm font-medium">
                 <i class="fas fa-briefcase mr-2 text-red-300"></i> Lowongan
             </a>
-            <a href="#" class="flex items-center py-2 px-4 rounded-lg bg-blue-700 hover:bg-blue-600 text-white transition duration-200 ease-in-out transform hover:scale-105 shadow-sm font-medium">
+            <a href="#"
+                class="flex items-center py-2 px-4 rounded-lg bg-blue-700 hover:bg-blue-600 text-white transition duration-200 ease-in-out transform hover:scale-105 shadow-sm font-medium">
                 <i class="fas fa-question-circle mr-2 text-blue-300"></i> Ini apa isinya?
             </a>
         </nav>
@@ -97,7 +104,8 @@
 
     <!-- Main Content -->
     <div class="flex-1 p-6 bg-gradient-to-r from-blue-200 to-blue-300 rounded-lg shadow-md"> <!-- Modern Header -->
-        <header class="flex justify-between items-center bg-gradient-to-r from-blue-500 to-blue-700 p-4 shadow-md rounded-lg mb-6">
+        <header
+            class="flex justify-between items-center bg-gradient-to-r from-blue-500 to-blue-700 p-4 shadow-md rounded-lg mb-6">
             <!-- Hamburger Menu for Sidebar -->
             <button id="hamburger" class="text-white focus:outline-none">
                 <i class="fas fa-bars text-2xl"></i>
@@ -110,7 +118,8 @@
             <div class="flex items-center space-x-6">
                 <!-- Search Input -->
                 <div class="relative">
-                    <input type="text" class="bg-gray-200 rounded-full px-4 py-2 pl-10 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    <input type="text"
+                        class="bg-gray-200 rounded-full px-4 py-2 pl-10 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                         placeholder="Cari sesuatu...">
                     <i class="fas fa-search absolute left-3 top-3 text-gray-500"></i>
                 </div>
@@ -119,7 +128,8 @@
                 <div class="relative">
                     <i class="fas fa-bell text-2xl text-white cursor-pointer"></i>
                     <!-- Notification Badge -->
-                    <span class="absolute top-0 right-0 bg-red-600 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">3</span>
+                    <span
+                        class="absolute top-0 right-0 bg-red-600 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">3</span>
                 </div>
 
                 <!-- Profile Dropdown -->
@@ -154,24 +164,29 @@
                 </p>
                 <div class="space-x-4 mt-2 md:mt-0">
                     <a href="#" class="text-white hover:text-blue-300 transition duration-200">Privacy Policy</a>
-                    <a href="#" class="text-white hover:text-blue-300 transition duration-200">Terms of Service</a>
+                    <a href="#" class="text-white hover:text-blue-300 transition duration-200">Terms of
+                        Service</a>
                     <a href="#" class="text-white hover:text-blue-300 transition duration-200">Contact Us</a>
                 </div>
                 <div class="space-x-4 mt-4 md:mt-0 flex justify-center">
                     <!-- Facebook Icon -->
-                    <a href="https://www.facebook.com/polinema/?locale=id_ID" class="text-blue-200 hover:text-white transition duration-200">
+                    <a href="https://www.facebook.com/polinema/?locale=id_ID"
+                        class="text-blue-200 hover:text-white transition duration-200">
                         <i class="fab fa-facebook-f"></i>
                     </a>
                     <!-- Twitter Icon -->
-                    <a href="https://x.com/polinema_campus" class="text-blue-400 hover:text-white transition duration-200">
+                    <a href="https://x.com/polinema_campus"
+                        class="text-blue-400 hover:text-white transition duration-200">
                         <i class="fab fa-twitter"></i>
                     </a>
                     <!-- Instagram Icon -->
-                    <a href="https://www.instagram.com/polinema_campus/" class="text-pink-500 hover:text-white transition duration-200">
+                    <a href="https://www.instagram.com/polinema_campus/"
+                        class="text-pink-500 hover:text-white transition duration-200">
                         <i class="fab fa-instagram"></i>
                     </a>
                     <!-- LinkedIn Icon -->
-                    <a href="https://www.linkedin.com/school/polinema-joss/?originalSubdomain=id" class="text-blue-300 hover:text-white transition duration-200">
+                    <a href="https://www.linkedin.com/school/polinema-joss/?originalSubdomain=id"
+                        class="text-blue-300 hover:text-white transition duration-200">
                         <i class="fab fa-linkedin-in"></i>
                     </a>
                 </div>
