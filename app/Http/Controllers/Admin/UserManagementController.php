@@ -8,7 +8,6 @@ use App\Models\User;
 
 class UserManagementController extends Controller
 {
-    // Menampilkan daftar pengguna dengan role 'user'
     public function index()
     {
         // Mengambil semua pengguna dengan role 'user'
@@ -16,20 +15,27 @@ class UserManagementController extends Controller
         return view('admin.manageuser.index', compact('users'));
     }
 
-    // Menampilkan form untuk menambah pengguna baru
     public function create()
     {
         return view('admin.manageuser.create');
     }
 
-    // Menyimpan pengguna baru ke database
     public function store(Request $request)
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'nim' => 'required|string',
+            'nim' => 'required|string|unique:users,nim',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|string|min:8|confirmed',
+        ], [
+            'name.required' => 'Nama lengkap wajib diisi.',
+            'nim.required' => 'NIM wajib diisi.',
+            'nim.unique' => 'NIM sudah ada dalam sistem.',
+            'email.required' => 'Email wajib diisi.',
+            'email.unique' => 'Email sudah ada dalam sistem.',
+            'password.required' => 'Password wajib diisi.',
+            'password.min' => 'Password harus memiliki minimal 8 karakter.',
+            'password.confirmed' => 'Konfirmasi password tidak sesuai.',
         ]);
 
         User::create([
@@ -43,26 +49,26 @@ class UserManagementController extends Controller
         return redirect()->route('admin.manageuser.index')->with('success', 'Pengguna berhasil ditambahkan.');
     }
 
-    // Menampilkan form untuk mengedit data pengguna
     public function edit($id)
     {
         $user = User::where('id', $id)->where('role', 'user')->firstOrFail();
         return view('admin.manageuser.edit', compact('user'));
     }
 
-    // Memperbarui data pengguna di database
     public function update(Request $request, $id)
     {
-        // $user = User::findOrFail($id);
         $user = User::where('id', $id)->where('role', 'user')->firstOrFail();
 
         $request->validate([
             'name' => 'required|string|max:255',
-            'nim' => 'required|string',
+            'nim' => 'required|string|unique:users,nim,' . $user->id,
             'email' => 'required|email|unique:users,email,' . $user->id,
+        ], [
+            'nim.unique' => 'NIM sudah ada dalam sistem.',
+            'email.unique' => 'Email sudah ada dalam sistem.',
         ]);
 
-        // Memperbarui user tanpa password
+        // Memperbarui user tanpa mengubah password
         $user->update([
             'name' => $request->name,
             'nim' => $request->nim,
@@ -72,7 +78,6 @@ class UserManagementController extends Controller
         return redirect()->route('admin.manageuser.index')->with('success', 'Pengguna berhasil diperbarui.');
     }
 
-    // Menghapus pengguna dari database
     public function destroy($id)
     {
         $user = User::findOrFail($id);

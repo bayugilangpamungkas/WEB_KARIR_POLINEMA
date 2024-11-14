@@ -1,4 +1,3 @@
-<!-- resources/views/admin/manageuser/edit.blade.php -->
 @extends('admin.layouts.app')
 
 @section('content')
@@ -18,9 +17,12 @@
                 <label for="name" class="block text-sm font-medium text-gray-700 mb-1">
                     Nama User <span class="text-red-500">*</span>
                 </label>
-                <input type="text" id="name" name="name" value="{{ $user->name }}"
+                <input type="text" id="name" name="name" value="{{ old('name', $user->name) }}"
                     class="w-full border border-gray-300 rounded-xl p-4 shadow-sm focus:ring-blue-500 focus:border-blue-500 transition duration-300"
                     placeholder="Masukkan nama user" required>
+                @error('name')
+                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                @enderror
             </div>
 
             <!-- NIM User -->
@@ -28,9 +30,12 @@
                 <label for="nim" class="block text-sm font-medium text-gray-700 mb-1">
                     NIM <span class="text-red-500">*</span>
                 </label>
-                <input type="text" id="nim" name="nim" value="{{ $user->nim }}"
+                <input type="text" id="nim" name="nim" value="{{ old('nim', $user->nim) }}"
                     class="w-full border border-gray-300 rounded-xl p-4 shadow-sm focus:ring-blue-500 focus:border-blue-500 transition duration-300"
                     placeholder="Masukkan NIM user" required>
+                @error('nim')
+                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                @enderror
             </div>
 
             <!-- Email User -->
@@ -38,9 +43,12 @@
                 <label for="email" class="block text-sm font-medium text-gray-700 mb-1">
                     Email <span class="text-red-500">*</span>
                 </label>
-                <input type="email" id="email" name="email" value="{{ $user->email }}"
+                <input type="email" id="email" name="email" value="{{ old('email', $user->email) }}"
                     class="w-full border border-gray-300 rounded-xl p-4 shadow-sm focus:ring-blue-500 focus:border-blue-500 transition duration-300"
                     placeholder="Masukkan email user" required>
+                @error('email')
+                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                @enderror
             </div>
 
             <!-- Action Buttons -->

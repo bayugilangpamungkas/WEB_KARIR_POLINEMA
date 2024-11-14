@@ -9,7 +9,7 @@
         </h2>
         <a href="{{ route('admin.manageuser.create') }}"
             class="bg-gradient-to-r from-indigo-500 to-purple-600 text-white px-6 py-3 rounded-xl 
-                  shadow-lg transition duration-300">
+                shadow-lg transition duration-300">
             Tambah User Baru
         </a>
     </div>
@@ -44,12 +44,11 @@
                         <div class="flex justify-center space-x-4">
                             <a href="{{ route('admin.manageuser.edit', $user->id) }}"
                                 class="bg-yellow-400 text-white px-4 py-2 rounded-lg hover:bg-yellow-500 
-                                          shadow-md transition duration-300">
+                                        shadow-md transition duration-300">
                                 <i class="fas fa-edit"></i> Edit
                             </a>
-                            <button onclick="openDeleteModal({{ $user->id }})"
-                                class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 
-                                               shadow-md transition duration-300">
+                            <button onclick="openDeleteModal('{{ $user->id }}')"
+                                class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 shadow-md transition duration-300">
                                 <i class="fas fa-trash-alt"></i> Hapus
                             </button>
                         </div>
