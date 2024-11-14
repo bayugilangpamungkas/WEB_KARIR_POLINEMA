@@ -10,6 +10,7 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Admin\LowonganController;
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\UserManagementController;
 
 // Route untuk halaman utama
 // Route::get('/', function () {
@@ -76,6 +77,24 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
         Route::get('/materi/{id}/edit', [AdminController::class, 'editMateri'])->name('admin.materi.edit');
         Route::put('/materi/{id}', [AdminController::class, 'updateMateri'])->name('admin.materi.update');
         Route::delete('/materi/{id}', [AdminController::class, 'deleteMateri'])->name('admin.materi.delete');
+
+        // Routes untuk manajemen user oleh admin
+        Route::get('/list-user', [UserManagementController::class, 'index'])->name('admin.manageuser.index');
+        Route::get('/list-user/create', [UserManagementController::class, 'create'])->name('admin.manageuser.create');
+        Route::post('/list-user', [UserManagementController::class, 'store'])->name('admin.manageuser.store');
+        Route::get('/list-user/{id}/edit', [UserManagementController::class, 'edit'])->name('admin.manageuser.edit');
+        Route::put('/list-user/{id}', [UserManagementController::class, 'update'])->name('admin.manageuser.update');
+        Route::delete('/list-user/{id}', [UserManagementController::class, 'destroy'])->name('admin.manageuser.destroy');
+
+        // Routes untuk lowongan oleh admin
+        Route::prefix('lowongan')->name('admin.lowongan.')->group(function () {
+            Route::get('/', [LowonganController::class, 'index'])->name('index');
+            Route::get('/create', [LowonganController::class, 'create'])->name('create');
+            Route::post('/', [LowonganController::class, 'store'])->name('store');
+            Route::get('{lowongan}/edit', [LowonganController::class, 'edit'])->name('edit');
+            Route::put('{lowongan}', [LowonganController::class, 'update'])->name('update');
+            Route::delete('{lowongan}', [LowonganController::class, 'destroy'])->name('destroy');
+        });
     });
 });
 
@@ -87,15 +106,4 @@ Route::middleware(['auth', UserMiddleware::class])->group(function () {
 
     // Routes untuk melihat materi oleh pengguna
     Route::get('/materi/{id}', [MateriController::class, 'show'])->name('user.materi.show');
-});
-
-Route::prefix('admin')->name('admin.')->group(function () {
-    Route::prefix('lowongan')->name('lowongan.')->group(function () {
-        Route::get('/', [LowonganController::class, 'index'])->name('index');
-        Route::get('/create', [LowonganController::class, 'create'])->name('create');
-        Route::post('/', [LowonganController::class, 'store'])->name('store');
-        Route::get('{lowongan}/edit', [LowonganController::class, 'edit'])->name('edit');
-        Route::put('{lowongan}', [LowonganController::class, 'update'])->name('update');
-        Route::delete('{lowongan}', [LowonganController::class, 'destroy'])->name('destroy');
-    });
 });
