@@ -7,7 +7,7 @@
         <form action="{{ route('admin.lowongan.store') }}" method="POST" class="bg-white p-8 rounded-lg shadow-lg">
             @csrf
             <div class="mb-6">
-                <label for="title" class="block text-xl font-semibold text-gray-700 mb-2">Judul</label>
+                <label for="judul" class="block text-xl font-semibold text-gray-700 mb-2">Judul</label>
                 <input type="text" name="title" id="title"
                     class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300"
                     value="{{ old('title') }}" required>
@@ -17,7 +17,7 @@
             </div>
 
             <div class="mb-6">
-                <label for="company" class="block text-xl font-semibold text-gray-700 mb-2">Perusahaan</label>
+                <label for="judul" class="block text-xl font-semibold text-gray-700 mb-2">Perusahaan</label>
                 <input type="text" name="company" id="company"
                     class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300"
                     value="{{ old('company') }}" required>
@@ -37,7 +37,8 @@
             </div>
 
             <div class="mb-6">
-                <label for="tanggal_berakhir" class="block text-xl font-semibold text-gray-700 mb-2">Tanggal Berakhir</label>
+                <label for="tanggal_berakhir" class="block text-xl font-semibold text-gray-700 mb-2">Tanggal
+                    Berakhir</label>
                 <input type="date" name="tanggal_berakhir" id="tanggal_berakhir"
                     class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300"
                     value="{{ old('tanggal_berakhir') }}" required>

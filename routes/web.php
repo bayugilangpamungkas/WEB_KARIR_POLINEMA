@@ -7,6 +7,7 @@ use App\Http\Controllers\User\TopikController;
 use App\Http\Controllers\User\MateriController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\Admin\LowonganController;
 
 use App\Http\Controllers\Admin\AdminController;
 
@@ -86,4 +87,15 @@ Route::middleware(['auth', UserMiddleware::class])->group(function () {
 
     // Routes untuk melihat materi oleh pengguna
     Route::get('/materi/{id}', [MateriController::class, 'show'])->name('user.materi.show');
+});
+
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::prefix('lowongan')->name('lowongan.')->group(function () {
+        Route::get('/', [LowonganController::class, 'index'])->name('index');
+        Route::get('/create', [LowonganController::class, 'create'])->name('create');
+        Route::post('/', [LowonganController::class, 'store'])->name('store');
+        Route::get('{lowongan}/edit', [LowonganController::class, 'edit'])->name('edit');
+        Route::put('{lowongan}', [LowonganController::class, 'update'])->name('update');
+        Route::delete('{lowongan}', [LowonganController::class, 'destroy'])->name('destroy');
+    });
 });
