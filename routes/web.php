@@ -7,6 +7,7 @@ use App\Http\Controllers\User\TopikController;
 use App\Http\Controllers\User\MateriController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\Admin\LowonganController;
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\UserManagementController;
@@ -84,6 +85,16 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
         Route::get('/list-user/{id}/edit', [UserManagementController::class, 'edit'])->name('admin.manageuser.edit');
         Route::put('/list-user/{id}', [UserManagementController::class, 'update'])->name('admin.manageuser.update');
         Route::delete('/list-user/{id}', [UserManagementController::class, 'destroy'])->name('admin.manageuser.destroy');
+
+        // Routes untuk lowongan oleh admin
+        Route::prefix('lowongan')->name('admin.lowongan.')->group(function () {
+            Route::get('/', [LowonganController::class, 'index'])->name('index');
+            Route::get('/create', [LowonganController::class, 'create'])->name('create');
+            Route::post('/', [LowonganController::class, 'store'])->name('store');
+            Route::get('{lowongan}/edit', [LowonganController::class, 'edit'])->name('edit');
+            Route::put('{lowongan}', [LowonganController::class, 'update'])->name('update');
+            Route::delete('{lowongan}', [LowonganController::class, 'destroy'])->name('destroy');
+        });
     });
 });
 
