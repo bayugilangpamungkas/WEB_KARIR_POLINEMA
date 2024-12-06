@@ -8,6 +8,7 @@ use App\Http\Controllers\User\MateriController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Admin\LowonganController;
+use App\Http\Controllers\Admin\WebinarController;
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\UserManagementController;
@@ -95,6 +96,14 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
             Route::put('{lowongan}', [LowonganController::class, 'update'])->name('update');
             Route::delete('{lowongan}', [LowonganController::class, 'destroy'])->name('destroy');
         });
+
+        // Routes untuk webinar
+        Route::get('/webinars', [WebinarController::class, 'index'])->name('admin.webinars.index');
+        Route::get('/webinars/create', [WebinarController::class, 'create'])->name('admin.webinars.create');
+        Route::post('/webinars', [WebinarController::class, 'store'])->name('admin.webinars.store');
+        Route::get('/webinars/{id}/edit', [WebinarController::class, 'edit'])->name('admin.webinars.edit');
+        Route::put('/webinars/{id}', [WebinarController::class, 'update'])->name('admin.webinars.update');
+        Route::delete('webinars/{id}/delete', [WebinarController::class, 'destroy'])->name('webinars.delete');
     });
 });
 
