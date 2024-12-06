@@ -7,7 +7,15 @@
     <h2 class="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 mb-8 text-center">
         Daftar Materi untuk Topik: {{ $topik->judul_topik }}
     </h2>
-    
+
+    <!-- Progres Bar -->
+    <div class="mb-8">
+        <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Progres Pembelajaran: {{ $progress }}%</h3>
+        <div class="w-full bg-gray-200 rounded-full h-2.5 mb-4">
+            <div class="bg-gradient-to-r from-blue-500 to-indigo-500 h-2.5 rounded-full" style="width: {{ $progress }}%"></div>
+        </div>
+    </div>
+
     <!-- Grid Layout for Materi Cards -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         @foreach ($topik->materis as $materi)

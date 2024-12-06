@@ -25,6 +25,50 @@
                 <p class="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
                     {{ $topik->deskripsi_topik }}
                 </p>
+
+                <!-- Progress Bar -->
+                @if ($topik->materis->count() > 0)
+                    @php
+                        $completedMateri = $topik->materis->filter(function($materi) {
+                            return $materi->isCompleted(auth()->user());
+                        })->count();
+
+                        $progress = $topik->materis->count() > 0 ? round(($completedMateri / $topik->materis->count()) * 100) : 0;
+                    @endphp
+
+                    <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5 mb-4">
+                        <div class="bg-gradient-to-r from-blue-500 to-indigo-500 h-2.5 rounded-full transition-all duration-300 ease-in-out" style="width: {{ $progress }}%"></div>
+                    </div>
+
+                    <!-- Progres Bar Text Styling -->
+                    <div class="flex items-center justify-between mb-4">
+                        <!-- Percentage Completed -->
+                        <div class="flex items-center">
+                            <span class="text-lg font-semibold text-gray-700 dark:text-gray-300">{{ $progress }}%</span>
+                        </div>
+
+                        <!-- Status Text with Dynamic Color -->
+                        <div>
+                            <span class="text-xs font-medium 
+                                @if ($progress == 100) 
+                                    text-green-500 dark:text-green-400 
+                                @elseif ($progress > 50)
+                                    text-yellow-500 dark:text-yellow-400
+                                @else
+                                    text-red-500 dark:text-red-400
+                                @endif
+                            ">
+                                @if ($progress == 100)
+                                    Selesai
+                                @elseif ($progress > 0)
+                                    Terus Belajar!
+                                @else
+                                    Mulai Belajar
+                                @endif
+                            </span>
+                        </div>
+                    </div>
+                @endif
                 
                 <!-- Call-to-action button -->
                 <a href="{{ route('user.topik.show', $topik->id) }}" 
