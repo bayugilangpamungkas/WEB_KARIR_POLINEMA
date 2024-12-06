@@ -92,9 +92,8 @@
                 class="flex items-center py-2 px-4 rounded-lg bg-blue-700 hover:bg-blue-600 text-white transition duration-200 ease-in-out transform hover:scale-105 shadow-sm font-medium">
                 <i class="fas fa-briefcase mr-2 text-red-300"></i> Lowongan
             </a>
-            <a href="#"
-                class="flex items-center py-2 px-4 rounded-lg bg-blue-700 hover:bg-blue-600 text-white transition duration-200 ease-in-out transform hover:scale-105 shadow-sm font-medium">
-                <i class="fas fa-question-circle mr-2 text-blue-300"></i> Ini apa isinya?
+            <a href="{{ route('admin.webinars.index') }}" class="flex items-center py-2 px-4 rounded-lg bg-blue-700 hover:bg-blue-600 text-white">
+                <i class="fas fa-calendar-plus mr-2 text-yellow-300"></i> Webinar
             </a>
         </nav>
 
