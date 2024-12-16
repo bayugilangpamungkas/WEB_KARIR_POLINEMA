@@ -10,6 +10,7 @@ use App\Http\Controllers\User\MateriController;
 use App\Http\Controllers\User\LowonganController as UserLowonganController;
 use App\Http\Controllers\LowonganController; // Menambahkan LowonganController
 use App\Http\Controllers\WebinarController;
+use App\Http\Controllers\User\WebinarController as UserWebinarController;
 
 // Route untuk halaman utama
 Route::get('/', function () {
@@ -80,3 +81,6 @@ Route::middleware(['auth', UserMiddleware::class])->group(function () {
 // Routes untuk lowongan yang bisa diakses oleh semua pengguna, tanpa login
 Route::get('/lowongan', [UserLowonganController::class, 'index'])->name('user.lowongan.index');
 Route::get('/lowongan/{id}', [UserLowonganController::class, 'show'])->name('user.lowongan.show');
+
+// User routes
+Route::get('/webinars', [UserWebinarController::class, 'index'])->name('user.webinars.index');

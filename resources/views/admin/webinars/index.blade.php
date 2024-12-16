@@ -27,6 +27,7 @@
                     <th class="py-4 px-6 border-b text-left">Tanggal</th>
                     <th class="py-4 px-6 border-b text-left">Narasumber</th>
                     <th class="py-4 px-6 border-b text-left">Link</th>
+                    <th class="py-4 px-6 border-b text-left">Poster</th> <!-- New column -->
                     <th class="py-4 px-6 border-b text-center">Aksi</th>
                 </tr>
             </thead>
@@ -40,6 +41,14 @@
                             <a href="{{ $webinar->link_web }}" target="_blank" class="text-blue-500 hover:text-blue-700">
                                 {{ $webinar->link_web }}
                             </a>
+                        </td>
+                        <td class="py-4 px-6">
+                            <!-- Display poster image if available -->
+                            @if($webinar->poster_web)
+                                <img src="{{ asset('storage/' . $webinar->poster_web) }}" alt="Poster" class="w-16 h-16 object-cover rounded-lg">
+                            @else
+                                <span class="text-gray-500">Tidak Ada</span>
+                            @endif
                         </td>
                         <td class="py-4 px-6 text-center">
                             <div class="flex justify-center space-x-4">

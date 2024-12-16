@@ -25,6 +25,11 @@
                         Topik
                     </a>
                 </li>
+                <li>
+                    <a href="{{ route('user.webinars.index') }}" class="hover:text-gray-200 transition duration-300">
+                        Webinar
+                    </a>
+                </li>
             </ul>
             <!-- Logout Button -->
             <div class="flex items-center space-x-4">

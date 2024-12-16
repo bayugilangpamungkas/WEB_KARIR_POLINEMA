@@ -6,7 +6,7 @@
         <h1 class="text-3xl font-semibold text-gray-800 mb-6 text-center">📝 Tambah Lowongan Baru</h1>
 
         <!-- Formulir untuk menambah lowongan baru -->
-        <form action="{{ route('lowongan.store') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('admin.lowongan.create') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="mb-5">
                 <label for="fotoLowongan" class="block text-gray-700 font-medium mb-2">Foto Lowongan</label>
