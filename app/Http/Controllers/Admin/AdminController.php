@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Str; // Tambahkan di sini
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Str;
 use App\Models\Topik;
 use App\Models\Materi;
 
@@ -14,7 +15,7 @@ class AdminController extends Controller
     {
         return view('admin.dashboard'); // Mengembalikan tampilan dashboard
     }
-    
+
     // CRUD untuk Topik
     public function indexTopik()
     {

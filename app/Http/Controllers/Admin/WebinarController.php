@@ -1,26 +1,23 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Models\Webinar;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Str;
+
 
 class WebinarController extends Controller
 {
+
     public function index()
     {
         $webinars = Webinar::latest()->get();
-/*************  ✨ Codeium Command ⭐  *************/
-    /**
-     * Menampilkan halaman yang berisi daftar webinar.
-     *
-     * @return \Illuminate\Http\Response
-     */
-/******  b0a0b826-b944-4d76-90c4-df2b286fc7e6  *******/        return view('admin.webinars.index', compact('webinars'));
+        return view('admin.webinars.index', compact('webinars'));
     }
-    
-    // FORM CRUD
+
+    //FORMM CRUD
     public function create()
     {
         return view('admin.webinars.create');
@@ -53,7 +50,7 @@ class WebinarController extends Controller
     // Menampilkan form edit webinar
     public function edit($id)
     {
-        $webinar = Webinar::findOrFail($id);
+        $webinar = Webinar::findOrFail($id);  // Pastikan mendapatkan data webinar dengan benar
         return view('admin.webinars.edit', compact('webinar'));
     }
 
@@ -81,17 +78,18 @@ class WebinarController extends Controller
         return redirect()->route('admin.webinars.index')->with('success', 'Webinar updated successfully!');
     }
 
+
     // Menghapus webinar
     public function destroy($id)
     {
         $webinar = Webinar::find($id);
-    
+
         if (!$webinar) {
             return redirect()->route('admin.webinars.index')->with('error', 'Webinar tidak ditemukan.');
         }
-    
+
         $webinar->delete();
-    
+
         return redirect()->route('admin.webinars.index')->with('success', 'Webinar berhasil dihapus.');
     }
-    }
+}

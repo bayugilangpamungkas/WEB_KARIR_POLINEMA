@@ -11,9 +11,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         @keyframes float {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: translateY(0);
             }
+
             50% {
                 transform: translateY(-10px);
             }
@@ -54,17 +57,19 @@
         <hr class="border-t border-blue-300 opacity-50">
 
         <nav class="space-y-4">
-            <a href="{{ route('admin.dashboard') }}" class="flex items-center py-2 px-4 rounded-lg bg-blue-700 hover:bg-blue-600 text-white transition duration-200 ease-in-out transform hover:scale-105 shadow-sm font-medium">
+            <a href="{{ route('admin.dashboard') }}"
+                class="flex items-center py-2 px-4 rounded-lg bg-blue-700 hover:bg-blue-600 text-white transition duration-200 ease-in-out transform hover:scale-105 shadow-sm font-medium">
                 <i class="fas fa-home mr-2 text-blue-300"></i>
                 <span>Dashboard</span>
             </a>
-            <a href="#" class="flex items-center py-2 px-4 rounded-lg bg-blue-700 hover:bg-blue-600 text-white transition duration-200 ease-in-out transform hover:scale-105 shadow-sm font-medium">
+            <a href="{{ route('admin.manageuser.index') }}" class="flex items-center py-2 px-4 rounded-lg bg-blue-700 hover:bg-blue-600 text-white transition duration-200 ease-in-out transform hover:scale-105 shadow-sm font-medium">
                 <i class="fas fa-users mr-2 text-green-300"></i>
                 <span>List Peserta</span>
             </a>
             <hr class="border-t border-blue-300 opacity-50">
             <div>
-                <button id="webinarToggle" class="w-full flex items-center justify-between py-2 px-4 rounded-lg bg-blue-700 hover:bg-blue-600 text-white transition duration-200 ease-in-out transform hover:scale-105 shadow-sm font-medium">
+                <button id="webinarToggle"
+                    class="w-full flex items-center justify-between py-2 px-4 rounded-lg bg-blue-700 hover:bg-blue-600 text-white transition duration-200 ease-in-out transform hover:scale-105 shadow-sm font-medium">
                     <div class="flex items-center">
                         <i class="fas fa-graduation-cap mr-2 text-yellow-300"></i>
                         <span>Karir</span>
@@ -73,10 +78,12 @@
                 </button>
             </div>
             <div id="webinarDropdown" class="hidden pl-6 space-y-2 mt-2">
-                <a href="{{ route('admin.topik.index') }}" class="block py-2 px-4 rounded-lg bg-blue-600 hover:bg-blue-500 text-white transition font-medium">
+                <a href="{{ route('admin.topik.index') }}"
+                    class="block py-2 px-4 rounded-lg bg-blue-600 hover:bg-blue-500 text-white transition font-medium">
                     <i class="fas fa-book mr-2 text-purple-300"></i> Topik
                 </a>
-                <a href="{{ route('admin.materi.index') }}" class="block py-2 px-4 rounded-lg bg-blue-600 hover:bg-blue-500 text-white transition font-medium">
+                <a href="{{ route('admin.materi.index') }}"
+                    class="block py-2 px-4 rounded-lg bg-blue-600 hover:bg-blue-500 text-white transition font-medium">
                     <i class="fas fa-file-alt mr-2 text-pink-300"></i> Materi
                 </a>
             </div>
@@ -86,106 +93,106 @@
             </a>
             <a href="{{ route('admin.webinars.index') }}" class="flex items-center py-2 px-4 rounded-lg bg-blue-700 hover:bg-blue-600 text-white">
                 <i class="fas fa-calendar-plus mr-2 text-yellow-300"></i> Webinar
-            </a>
+                            </a>
         </nav>
 
         <hr class="border-t border-blue-300 opacity-50">
     </aside>
 
     <!-- Main Content -->
-    <div class="flex-1 p-6 bg-gradient-to-r from-blue-200 to-blue-300 rounded-lg shadow-md">        
+    <div class="flex-1 p-6 bg-gradient-to-r from-blue-200 to-blue-300 rounded-lg shadow-md">
         <!-- Modern Header -->
         <header class="flex justify-between items-center bg-gradient-to-r from-blue-500 to-blue-700 p-4 shadow-md rounded-lg mb-6">
             <!-- Hamburger Menu for Sidebar -->
             <button id="hamburger" class="text-white focus:outline-none">
                 <i class="fas fa-bars text-2xl"></i>
             </button>
-        
+
             <!-- Welcome Title -->
             <h1 class="text-2xl font-bold text-white">Selamat datang, Super Admin!</h1>
-        
+
             <!-- Right Section: Search, Notifications, Profile -->
             <div class="flex items-center space-x-6">
                 <!-- Search Input -->
                 <div class="relative">
-                    <input type="text" class="bg-gray-200 rounded-full px-4 py-2 pl-10 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    <input type="text"
+                        class="bg-gray-200 rounded-full px-4 py-2 pl-10 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                         placeholder="Cari sesuatu...">
                     <i class="fas fa-search absolute left-3 top-3 text-gray-500"></i>
                 </div>
-        
+
                 <!-- Notification Icon -->
                 <div class="relative">
                     <i class="fas fa-bell text-2xl text-white cursor-pointer"></i>
                     <!-- Notification Badge -->
-                    <span class="absolute top-0 right-0 bg-red-600 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">3</span>
+                    <span
+                        class="absolute top-0 right-0 bg-red-600 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">3</span>
                 </div>
-        
-<!-- Profile Dropdown Section -->
-<div class="relative">
-    <button id="profileButton" class="flex items-center space-x-2 focus:outline-none">
-        <img src="https://via.placeholder.com/40" alt="User" class="w-10 h-10 rounded-full shadow-lg border-2 border-blue-500">
-        <div class="flex flex-col">
-            <span class="text-white font-semibold">{{ Auth::user()->name }}</span>
-            @if (Auth::user()->role == 'admin')
-            <span class="text-blue-200 text-xs">Admin</span>
-        @elseif (Auth::user()->role == 'user')
-            <span class="text-blue-200 text-xs">User</span>
-        @endif        </div>
-        <i class="fas fa-chevron-down ml-2 text-white transition-transform duration-300 transform" :class="{ 'rotate-180': dropdownOpen }"></i>
-    </button>
 
-    <!-- Dropdown Menu -->
-    <div id="profileDropdown" class="absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-lg py-4 transform transition-all duration-300 ease-in-out scale-95 opacity-0 hidden"
-         x-show="dropdownOpen" @click.away="dropdownOpen = false">
-        <a href="{{ route('profile.edit') }}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 transition duration-200 flex items-center">
-            <i class="fas fa-user-circle text-blue-500 mr-2"></i> Profile
-        </a>
-        <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 transition duration-200 flex items-center">
-            <i class="fas fa-cog text-green-500 mr-2"></i> Settings
-        </a>
-        <form method="POST" action="{{ route('logout') }}" class="mt-2">
-            @csrf
-            <button type="submit" class="block w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-100 transition duration-200 flex items-center">
-                <i class="fas fa-sign-out-alt text-red-500 mr-2"></i> Logout
-            </button>
-        </form>
-    </div>
-</div>
+                <!-- Profile Dropdown Section -->
+                <div class="relative">
+                    <button id="profileButton" class="flex items-center space-x-2 focus:outline-none">
+                        <img src="https://via.placeholder.com/40" alt="User" class="w-10 h-10 rounded-full shadow-lg border-2 border-blue-500">
+                        <div class="flex flex-col">
+                            <span class="text-white font-semibold">{{ Auth::user()->name }}</span>
+                            @if (Auth::user()->role == 'admin')
+                            <span class="text-blue-200 text-xs">Admin</span>
+                            @elseif (Auth::user()->role == 'user')
+                            <span class="text-blue-200 text-xs">User</span>
+                            @endif
+                        </div>
+                        <i class="fas fa-chevron-down ml-2 text-white transition-transform duration-300 transform" :class="{ 'rotate-180': dropdownOpen }"></i>
+                    </button>
+
+                    <!-- Dropdown Menu -->
+                    <div id="profileDropdown" class="absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-lg py-4 transform transition-all duration-300 ease-in-out scale-95 opacity-0 hidden"
+                        x-show="dropdownOpen" @click.away="dropdownOpen = false">
+                        <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 transition duration-200 flex items-center">
+                            <i class="fas fa-cog text-green-500 mr-2"></i> Settings
+                        </a>
+                        <form method="POST" action="{{ route('logout') }}" class="mt-2">
+                            @csrf
+                            <button type="submit" class="block w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-100 transition duration-200 flex items-center">
+                                <i class="fas fa-sign-out-alt text-red-500 mr-2"></i> Logout
+                            </button>
+                        </form>
+                    </div>
+                </div>
             </div>
         </header>
-        
+
         <!-- Content Section -->
         @yield('content')
 
-<!-- Footer Section -->
-<footer class="bg-gradient-to-r from-blue-600 to-blue-800 text-white p-4 mt-4">
-    <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
-        <p class="text-center md:text-left text-sm">
-            &copy; 2024 Your Company. All rights reserved.
-        </p>
-        <div class="space-x-4 mt-2 md:mt-0">
-            <a href="#" class="text-white hover:text-blue-300 transition duration-200">Privacy Policy</a>
-            <a href="#" class="text-white hover:text-blue-300 transition duration-200">Terms of Service</a>
-            <a href="#" class="text-white hover:text-blue-300 transition duration-200">Contact Us</a>
-        </div>
-        <div class="space-x-4 mt-4 md:mt-0 flex justify-center">
-            <!-- Social Media Links -->
-            <a href="https://www.facebook.com/polinema/?locale=id_ID" class="text-blue-200 hover:text-white transition duration-200">
-                <i class="fab fa-facebook-f"></i>
-            </a>
-            <a href="https://x.com/polinema_campus" class="text-blue-400 hover:text-white transition duration-200">
-                <i class="fab fa-twitter"></i>
-            </a>
-            <a href="https://www.instagram.com/polinema_campus/" class="text-pink-500 hover:text-white transition duration-200">
-                <i class="fab fa-instagram"></i>
-            </a>
-            <a href="https://www.linkedin.com/school/polinema-joss/?originalSubdomain=id" class="text-blue-300 hover:text-white transition duration-200">
-                <i class="fab fa-linkedin-in"></i>
-            </a>
-        </div>
-    </div>
-</footer>
-    
+        <!-- Footer Section -->
+        <footer class="bg-gradient-to-r from-blue-600 to-blue-800 text-white p-4 mt-4">
+            <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
+                <p class="text-center md:text-left text-sm">
+                    &copy; 2024 Your Company. All rights reserved.
+                </p>
+                <div class="space-x-4 mt-2 md:mt-0">
+                    <a href="#" class="text-white hover:text-blue-300 transition duration-200">Privacy Policy</a>
+                    <a href="#" class="text-white hover:text-blue-300 transition duration-200">Terms of Service</a>
+                    <a href="#" class="text-white hover:text-blue-300 transition duration-200">Contact Us</a>
+                </div>
+                <div class="space-x-4 mt-4 md:mt-0 flex justify-center">
+                    <!-- Social Media Links -->
+                    <a href="https://www.facebook.com/polinema/?locale=id_ID" class="text-blue-200 hover:text-white transition duration-200">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://x.com/polinema_campus" class="text-blue-400 hover:text-white transition duration-200">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://www.instagram.com/polinema_campus/" class="text-pink-500 hover:text-white transition duration-200">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/school/polinema-joss/?originalSubdomain=id" class="text-blue-300 hover:text-white transition duration-200">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                </div>
+            </div>
+        </footer>
+
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -210,17 +217,17 @@
         });
 
         profileButton.addEventListener('click', (event) => {
-    event.stopPropagation();
-    profileDropdown.classList.toggle('hidden');
-    profileDropdown.classList.toggle('opacity-0');
-    profileDropdown.classList.toggle('scale-95');
-});
+            event.stopPropagation();
+            profileDropdown.classList.toggle('hidden');
+            profileDropdown.classList.toggle('opacity-0');
+            profileDropdown.classList.toggle('scale-95');
+        });
 
-document.addEventListener('click', () => {
-    profileDropdown.classList.add('hidden');
-    profileDropdown.classList.add('opacity-0');
-    profileDropdown.classList.add('scale-95');
-});
+        document.addEventListener('click', () => {
+            profileDropdown.classList.add('hidden');
+            profileDropdown.classList.add('opacity-0');
+            profileDropdown.classList.add('scale-95');
+        });
     </script>
 </body>
 

@@ -1,36 +1,68 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AdminController;
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Middleware\UserMiddleware;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisteredUserController;
+
 use App\Http\Controllers\User\TopikController;
 use App\Http\Controllers\User\MateriController;
 use App\Http\Controllers\User\LowonganController as UserLowonganController;
-use App\Http\Controllers\LowonganController; // Menambahkan LowonganController
-use App\Http\Controllers\WebinarController;
 use App\Http\Controllers\User\WebinarController as UserWebinarController;
 
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\UserManagementController;
+use App\Http\Controllers\Admin\LowonganController; // Menambahkan LowonganController
+use App\Http\Controllers\Admin\WebinarController;
+
+
+
+
 // Route untuk halaman utama
+// Route::get('/', function () {
+//     return view('index');
+// });
+
+// Route untuk dashboard, hanya bisa diakses oleh pengguna yang terautentikasi dan terverifikasi
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
+
+// Routes untuk profile, hanya bisa diakses oleh pengguna yang terautentikasi
+// Route::middleware('auth')->group(function () {
+//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+// });
+
+// Autentikasi Laravel
+require __DIR__ . '/auth.php';
+
+// Route untuk tampilan halaman depan
 Route::get('/', function () {
     return view('index');
 });
 
-// Route untuk dashboard, hanya bisa diakses oleh pengguna yang terautentikasi dan terverifikasi
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-// Routes untuk profile, hanya bisa diakses oleh pengguna yang terautentikasi
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+// Route untuk halaman register
+Route::get('/register', function () {
+    return view('register');
 });
 
-// Autentikasi Laravel
-require __DIR__.'/auth.php';
+// Route untuk tampilan halaman login
+Route::get('/login', function () {
+    return view('login');
+})->name('login');
+
+// Route untuk proses login
+Route::post('/login', [LoginController::class, 'login']);
+
+// Route untuk proses logout
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+// Route untuk menampilkan form register
+Route::get('/register', [RegisteredUserController::class, 'create'])->name('register');
+Route::post('/register', [RegisteredUserController::class, 'store']);
 
 // Routes untuk admin, menggunakan middleware AdminMiddleware
 Route::middleware(['auth', AdminMiddleware::class])->group(function () {
@@ -56,6 +88,14 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
         // Routes untuk lowongan oleh admin
         Route::resource('lowongan', LowonganController::class)->names('admin.lowongan');
 
+        // Routes untuk manajemen user oleh admin
+        Route::get('/list-user', [UserManagementController::class, 'index'])->name('admin.manageuser.index');
+        Route::get('/list-user/create', [UserManagementController::class, 'create'])->name('admin.manageuser.create');
+        Route::post('/list-user', [UserManagementController::class, 'store'])->name('admin.manageuser.store');
+        Route::get('/list-user/{id}/edit', [UserManagementController::class, 'edit'])->name('admin.manageuser.edit');
+        Route::put('/list-user/{id}', [UserManagementController::class, 'update'])->name('admin.manageuser.update');
+        Route::delete('/list-user/{id}', [UserManagementController::class, 'destroy'])->name('admin.manageuser.destroy');
+
         // Routes untuk webinar
         Route::get('/webinars', [WebinarController::class, 'index'])->name('admin.webinars.index');
         Route::get('/webinars/create', [WebinarController::class, 'create'])->name('admin.webinars.create');
@@ -71,10 +111,10 @@ Route::middleware(['auth', UserMiddleware::class])->group(function () {
     // Routes untuk melihat topik oleh pengguna
     Route::get('/topik', [TopikController::class, 'index'])->name('user.topik.index');
     Route::get('/topik/{id}', [TopikController::class, 'show'])->name('user.topik.show');
-    
+
     // Menambahkan rute untuk menampilkan materi
     Route::get('/materi/{id}', [MateriController::class, 'show'])->name('user.materi.show');
-    
+
     Route::post('/materi/{id}/complete', [MateriController::class, 'complete'])->name('user.materi.complete');
 });
 

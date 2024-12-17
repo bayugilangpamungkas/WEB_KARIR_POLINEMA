@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Lowongan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -52,7 +53,7 @@ class LowonganController extends Controller
         $lowongan->tanggal_selesai = $request->tanggalSelesai;
         $lowongan->save();
 
-        return redirect()->route('lowongan.index')->with('success', 'Lowongan berhasil dibuat.');
+        return redirect()->route('admin.lowongan.index')->with('success', 'Lowongan berhasil dibuat.');
     }
 
     // Menampilkan formulir edit lowongan
@@ -99,7 +100,7 @@ class LowonganController extends Controller
             'tanggal_selesai' => $request->tanggalSelesai,
         ]);
 
-        return redirect()->route('lowongan.index')->with('success', 'Lowongan berhasil diperbarui.');
+        return redirect()->route('admin.lowongan.index')->with('success', 'Lowongan berhasil diperbarui.');
     }
 
     // Menghapus lowongan dari database
@@ -113,6 +114,6 @@ class LowonganController extends Controller
         }
 
         $lowongan->delete();
-        return redirect()->route('lowongan.index')->with('success', 'Lowongan berhasil dihapus.');
+        return redirect()->route('admin.lowongan.index')->with('success', 'Lowongan berhasil dihapus.');
     }
 }

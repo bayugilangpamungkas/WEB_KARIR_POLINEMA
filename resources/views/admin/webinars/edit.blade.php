@@ -4,7 +4,7 @@
 @section('content')
 <div class="container mx-auto p-8">
     <h2 class="text-3xl sm:text-4xl font-bold text-gray-800 tracking-wide mb-8">
-        ✏ Edit Webinar
+        ✏️ Edit Webinar
     </h2>
 
     <form action="{{ route('admin.webinars.update', $webinar->id) }}" method="POST" enctype="multipart/form-data" class="space-y-6">
@@ -34,8 +34,8 @@
             <label for="poster_web" class="text-lg font-medium">Poster Webinar</label>
             <input type="file" name="poster_web" id="poster_web" class="w-full p-4 rounded-lg border">
             @if($webinar->poster_web)
-                <p class="mt-2 text-sm text-gray-600">Poster saat ini:</p>
-                <img src="{{ asset('storage/' . $webinar->poster_web) }}" alt="Poster Webinar" class="w-32 h-32 object-cover mt-2">
+            <p class="mt-2 text-sm text-gray-600">Poster saat ini:</p>
+            <img src="{{ asset('storage/' . $webinar->poster_web) }}" alt="Poster Webinar" class="w-32 h-32 object-cover mt-2">
             @endif
         </div>
 

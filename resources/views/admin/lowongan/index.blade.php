@@ -31,61 +31,61 @@
             </thead>
             <tbody class="text-gray-700">
                 @foreach ($lowonganList as $lowongan)
-                    <tr class="border-t hover:bg-gray-100">
-                        <!-- Foto Column -->
-                        <td class="py-4 px-6">
-                            <img src="{{ $lowongan->foto_url }}" alt="{{ $lowongan->judul }}" class="w-16 h-16 object-cover rounded-lg">
-                        </td>
-                        
-                        <!-- Judul, Posisi, Perusahaan, Tanggal Columns -->
-                        <td class="py-4 px-6">{{ $lowongan->judul }}</td>
-                        <td class="py-4 px-6">{{ $lowongan->posisi }}</td>
-                        <td class="py-4 px-6">{{ $lowongan->nama_perusahaan }}</td>
-                        <td class="py-4 px-6">{{ $lowongan->tanggal_mulai }} - {{ $lowongan->tanggal_selesai }}</td>
+                <tr class="border-t hover:bg-gray-100">
+                    <!-- Foto Column -->
+                    <td class="py-4 px-6">
+                        <img src="{{ $lowongan->foto_url }}" alt="{{ $lowongan->judul }}" class="w-16 h-16 object-cover rounded-lg">
+                    </td>
 
-                        <!-- Deskripsi Column -->
-                        <td class="py-4 px-6">{{ Str::limit($lowongan->deskripsi, 50) }}</td>
+                    <!-- Judul, Posisi, Perusahaan, Tanggal Columns -->
+                    <td class="py-4 px-6">{{ $lowongan->judul }}</td>
+                    <td class="py-4 px-6">{{ $lowongan->posisi }}</td>
+                    <td class="py-4 px-6">{{ $lowongan->nama_perusahaan }}</td>
+                    <td class="py-4 px-6">{{ $lowongan->tanggal_mulai }} - {{ $lowongan->tanggal_selesai }}</td>
 
-                        <!-- Kontak Column -->
-                        <td class="py-4 px-6">{{ $lowongan->kontak }}</td>
-                        
-                        <!-- Google Maps Link Column -->
-                        <td class="py-4 px-6">
-                            <a href="{{ $lowongan->google_maps_link }}" target="_blank" class="text-teal-600 hover:text-teal-500 font-medium">
-                                <i class="fas fa-map-marker-alt"></i> Lihat di Google Maps
-                            </a>
-                        </td>
-                        
-                        <!-- Aksi Column -->
-                        <td class="py-4 px-6 text-center">
-                            <a href="{{ route('admin.lowongan.edit', $lowongan->id) }}" class="text-teal-500 hover:text-teal-400 transition inline-block mr-4">
-                                <i class="fas fa-edit"></i> Edit
-                            </a>
-                            <button onclick="showModal({{ $lowongan->id }})" class="text-red-500 hover:text-red-400 transition inline-block">
-                                <i class="fas fa-trash-alt"></i> Hapus
+                    <!-- Deskripsi Column -->
+                    <td class="py-4 px-6">{{ Str::limit($lowongan->deskripsi, 50) }}</td>
+
+                    <!-- Kontak Column -->
+                    <td class="py-4 px-6">{{ $lowongan->kontak }}</td>
+
+                    <!-- Google Maps Link Column -->
+                    <td class="py-4 px-6">
+                        <a href="{{ $lowongan->google_maps_link }}" target="_blank" class="text-teal-600 hover:text-teal-500 font-medium">
+                            <i class="fas fa-map-marker-alt"></i> Lihat di Google Maps
+                        </a>
+                    </td>
+
+                    <!-- Aksi Column -->
+                    <td class="py-4 px-6 text-center">
+                        <a href="{{ route('admin.lowongan.edit', $lowongan->id) }}" class="text-teal-500 hover:text-teal-400 transition inline-block mr-4">
+                            <i class="fas fa-edit"></i> Edit
+                        </a>
+                        <button onclick="showModal({{ $lowongan->id }})" class="text-red-500 hover:text-red-400 transition inline-block">
+                            <i class="fas fa-trash-alt"></i> Hapus
+                        </button>
+                    </td>
+                </tr>
+
+                <!-- Modal for Delete Confirmation -->
+                <div id="modal-{{ $lowongan->id }}" class="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center hidden">
+                    <div class="bg-white rounded-lg shadow-lg p-6 w-80">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-4">Konfirmasi Hapus</h3>
+                        <p class="text-gray-600 mb-6">Apakah Anda yakin ingin menghapus lowongan ini?</p>
+                        <div class="flex justify-end gap-4">
+                            <button onclick="hideModal({{ $lowongan->id }})" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-2 px-4 rounded">
+                                Batal
                             </button>
-                        </td>
-                    </tr>
-
-                    <!-- Modal for Delete Confirmation -->
-                    <div id="modal-{{ $lowongan->id }}" class="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center hidden">
-                        <div class="bg-white rounded-lg shadow-lg p-6 w-80">
-                            <h3 class="text-xl font-semibold text-gray-800 mb-4">Konfirmasi Hapus</h3>
-                            <p class="text-gray-600 mb-6">Apakah Anda yakin ingin menghapus lowongan ini?</p>
-                            <div class="flex justify-end gap-4">
-                                <button onclick="hideModal({{ $lowongan->id }})" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-2 px-4 rounded">
-                                    Batal
+                            <form action="{{ route('admin.lowongan.destroy', $lowongan->id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded">
+                                    Hapus
                                 </button>
-                                <form action="{{ route('admin.lowongan.destroy', $lowongan->id) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded">
-                                        Hapus
-                                    </button>
-                                </form>
-                            </div>
+                            </form>
                         </div>
                     </div>
+                </div>
                 @endforeach
             </tbody>
         </table>
@@ -97,7 +97,7 @@
     function showModal(id) {
         document.getElementById('modal-' + id).classList.remove('hidden');
     }
-    
+
     function hideModal(id) {
         document.getElementById('modal-' + id).classList.add('hidden');
     }

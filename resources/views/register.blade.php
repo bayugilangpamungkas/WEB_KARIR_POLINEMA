@@ -5,15 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Register</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body>
-    <!-- Register-->
+    <!-- Register Form -->
 
     <section class="bg-white">
-        <div class="lg:grid lg:min-h-screen lg:grid-cols-12 ">
+        <div class="lg:grid lg:min-h-screen lg:grid-cols-12">
             <aside class="relative block h-16 lg:order-last lg:col-span-5 lg:h-full xl:col-span-6">
                 <img src="{{ asset('/asset/images/image3.png') }}" alt="Deskripsi Gambar"
                     class="w-[400px] h-[300px] object-cover rounded-lg mt-44 ml-32" />
@@ -23,87 +23,78 @@
                 class="flex items-center justify-center px-8 py-8 sm:px-12 lg:col-span-7 lg:px-16 lg:py-12 xl:col-span-6">
                 <div class="max-w-xl lg:max-w-3xl">
 
-
-                    <h1 class="mt-6 text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl">
-                        Register Your Account 🦑
+                    <h1 class="mt-6 text-2xl font-bold text-gray-900 mb-14 sm:text-3xl md:text-4xl">
+                        Register Your Account
                     </h1>
 
-                    <p class="mt-4 leading-relaxed text-gray-500">
-                        Already have account?
-                        <a href="#" class="text-gray-700 underline">Sign in</a>
-                    </p>
+                    <!-- Form Register -->
+                    <form action="{{ route('register') }}" method="POST" class="grid grid-cols-6 gap-6 mt-8">
+                        @csrf <!-- Token CSRF untuk keamanan -->
 
-                    <form action="#" class="mt-8 grid grid-cols-6 gap-6">
+                        <!-- Nama Depan -->
                         <div class="col-span-6 sm:col-span-3">
-                            <label for="FirstName" class="block text-sm font-medium text-gray-700">
-                                First Name
+                            <label for="name" class="block text-sm font-medium text-gray-700">
+                                Name
                             </label>
-
-                            <input type="text" id="FirstName" name="first_name"
-                                class="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm" />
+                            <input type="text" id="name" name="name"
+                                class="w-full p-2 mt-1 text-sm text-gray-700 bg-white border-2 border-blue-200 rounded-md shadow-sm focus:ring focus:ring-blue-200 focus:outline-none"
+                                value="{{ old('name') }}" required autofocus>
+                            @error('name')
+                            <span class="text-sm text-red-500">{{ $message }}</span>
+                            @enderror
                         </div>
 
-                        <div class="col-span-6 sm:col-span-3">
-                            <label for="LastName" class="block text-sm font-medium text-gray-700">
-                                Masukkan NIM.
+                        <div class=" col-span-6 sm:col-span-3">
+                            <label for="nim" class="block text-sm font-medium text-gray-700">
+                                NIM
                             </label>
 
-                            <input type="text" id="LastName" name="last_name"
-                                class="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm" />
+                            <input type="text" id="nim" name="nim"
+                                class="p-2 mt-1 w-full border-2 rounded-md border-blue-200 bg-white text-sm text-gray-700 shadow-sm focus:ring focus:ring-blue-200 focus:outline-none" />
                         </div>
 
+                        <!-- Email -->
                         <div class="col-span-6">
-                            <label for="Email" class="block text-sm font-medium text-gray-700"> Email </label>
-
-                            <input type="email" id="Email" name="email"
-                                class="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm" />
+                            <label for="email" class="block text-sm font-medium text-gray-700"> Email </label>
+                            <input type="email" id="email" name="email"
+                                class="w-full p-2 mt-1 text-sm text-gray-700 bg-white border-2 border-blue-200 rounded-md shadow-sm focus:ring focus:ring-blue-200 focus:outline-none"
+                                value="{{ old('email') }}" required>
+                            @error('email')
+                            <span class="text-sm text-red-500">{{ $message }}</span>
+                            @enderror
                         </div>
 
+                        <!-- Password -->
                         <div class="col-span-6 sm:col-span-3">
-                            <label for="Password" class="block text-sm font-medium text-gray-700"> Password </label>
-
-                            <input type="password" id="Password" name="password"
-                                class="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm" />
+                            <label for="password" class="block text-sm font-medium text-gray-700"> Password </label>
+                            <input type="password" id="password" name="password"
+                                class="w-full p-2 mt-1 text-sm text-gray-700 bg-white border-2 border-blue-200 rounded-md shadow-sm focus:ring focus:ring-blue-200 focus:outline-none"
+                                required>
+                            @error('password')
+                            <span class="text-sm text-red-500">{{ $message }}</span>
+                            @enderror
                         </div>
 
+                        <!-- Konfirmasi Password -->
                         <div class="col-span-6 sm:col-span-3">
-                            <label for="PasswordConfirmation" class="block text-sm font-medium text-gray-700">
-                                Password Confirmation
+                            <label for="password_confirmation" class="block text-sm font-medium text-gray-700">
+                                Confirm Password
                             </label>
-
-                            <input type="password" id="PasswordConfirmation" name="password_confirmation"
-                                class="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm" />
+                            <input type="password" id="password_confirmation" name="password_confirmation"
+                                class="w-full p-2 mt-1 text-sm text-gray-700 bg-white border-2 border-blue-200 rounded-md shadow-sm focus:ring focus:ring-blue-200 focus:outline-none"
+                                required>
                         </div>
 
-                        <div class="col-span-6">
-                            <label for="MarketingAccept" class="flex gap-4">
-                                <input type="checkbox" id="MarketingAccept" name="marketing_accept"
-                                    class="size-5 rounded-md border-gray-200 bg-white shadow-sm" />
-
-                                <span class="text-sm text-gray-700">
-                                    I want to receive emails about events, product updates and company announcements.
-                                </span>
-                            </label>
-                        </div>
-
-                        <div class="col-span-6">
-                            <p class="text-sm text-gray-500">
-                                By creating an account, you agree to our
-                                <a href="#" class="text-gray-700 underline"> terms and conditions </a>
-                                and
-                                <a href="#" class="text-gray-700 underline">privacy policy</a>.
-                            </p>
-                        </div>
-
+                        <!-- Tombol Submit -->
                         <div class="col-span-6 sm:flex sm:items-center sm:gap-4">
-                            <button
-                                class="inline-block shrink-0 rounded-md border border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500">
+                            <button type="submit"
+                                class="inline-block px-12 py-3 text-sm font-medium text-white transition border rounded-md shrink-0 border-violet-600 bg-violet-600 hover:bg-transparent hover:text-violet-600 focus:outline-none focus:ring active:text-violet-500">
                                 Create an account
                             </button>
 
                             <p class="mt-4 text-sm text-gray-500 sm:mt-0">
                                 Already have an account?
-                                <a href="#" class="text-gray-700 underline">Log in</a>.
+                                <a href="/login" class="text-gray-700 underline">Log in</a>.
                             </p>
                         </div>
                     </form>

@@ -15,7 +15,7 @@ class User extends Authenticatable
         'email',
         'nim',
         'password',
-        'role', // Pastikan 'role' ada di sini
+        'role',
     ];
 
     protected $hidden = [
@@ -25,7 +25,7 @@ class User extends Authenticatable
 
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'password' => 'hashed', // Laravel 10 mendukung 'hashed' sebagai tipe casting
+        'password' => 'hashed',
     ];
 
     public function progresses()

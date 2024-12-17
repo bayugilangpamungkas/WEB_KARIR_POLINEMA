@@ -4,7 +4,7 @@
 @section('content')
 <div class="container mx-auto p-6">
     <div class="bg-white rounded-lg shadow-md p-8 max-w-xl mx-auto">
-        <h1 class="text-3xl font-semibold text-gray-800 mb-6 text-center">✏️ Edit Lowongan</h1>
+        <h1 class="text-3xl font-semibold text-gray-800 mb-6 text-center">✏ Edit Lowongan</h1>
 
         <!-- Formulir untuk mengedit lowongan -->
         <form action="{{ route('admin.lowongan.update', $lowongan->id) }}" method="POST" enctype="multipart/form-data">
