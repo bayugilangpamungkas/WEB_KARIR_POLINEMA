@@ -13,13 +13,18 @@ return new class extends Migration
     {
         Schema::create('lowongans', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->text('description');
-            $table->string('company');
-            $table->date('tanggal_berakhir');
+            $table->string('judul');
+            $table->text('deskripsi');
+            $table->string('google_maps_link')->nullable();
+            $table->string('posisi');
+            $table->string('nama_perusahaan');
+            $table->string('kontak')->nullable();
+            $table->date('tanggal_mulai');
+            $table->date('tanggal_selesai');
+            $table->string('foto_url')->nullable();
             $table->timestamps();
         });
-    }
+        }
 
     /**
      * Reverse the migrations.

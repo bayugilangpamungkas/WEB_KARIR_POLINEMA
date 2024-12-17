@@ -88,8 +88,7 @@
                 </a>
             </div>
             <hr class="border-t border-blue-300 opacity-50">
-            <a href="{{ route('admin.lowongan.index') }}"
-                class="flex items-center py-2 px-4 rounded-lg bg-blue-700 hover:bg-blue-600 text-white transition duration-200 ease-in-out transform hover:scale-105 shadow-sm font-medium">
+            <a href="{{ route('admin.lowongan.index') }}" class="flex items-center py-2 px-4 rounded-lg bg-blue-700 hover:bg-blue-600 text-white transition duration-200 ease-in-out transform hover:scale-105 shadow-sm font-medium">
                 <i class="fas fa-briefcase mr-2 text-red-300"></i> Lowongan
             </a>
             <a href="{{ route('admin.webinars.index') }}" class="flex items-center py-2 px-4 rounded-lg bg-blue-700 hover:bg-blue-600 text-white">
@@ -101,9 +100,9 @@
     </aside>
 
     <!-- Main Content -->
-    <div class="flex-1 p-6 bg-gradient-to-r from-blue-200 to-blue-300 rounded-lg shadow-md"> <!-- Modern Header -->
-        <header
-            class="flex justify-between items-center bg-gradient-to-r from-blue-500 to-blue-700 p-4 shadow-md rounded-lg mb-6">
+    <div class="flex-1 p-6 bg-gradient-to-r from-blue-200 to-blue-300 rounded-lg shadow-md">
+        <!-- Modern Header -->
+        <header class="flex justify-between items-center bg-gradient-to-r from-blue-500 to-blue-700 p-4 shadow-md rounded-lg mb-6">
             <!-- Hamburger Menu for Sidebar -->
             <button id="hamburger" class="text-white focus:outline-none">
                 <i class="fas fa-bars text-2xl"></i>
@@ -130,20 +129,31 @@
                         class="absolute top-0 right-0 bg-red-600 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">3</span>
                 </div>
 
-                <!-- Profile Dropdown -->
+                <!-- Profile Dropdown Section -->
                 <div class="relative">
-                    <button class="flex items-center focus:outline-none" id="profileButton">
-                        <img src="https://via.placeholder.com/40" alt="User" class="w-10 h-10 rounded-full">
-                        <span class="ml-2 font-medium text-white">Admin</span>
-                        <i class="ml-2 text-white fas fa-chevron-down"></i>
+                    <button id="profileButton" class="flex items-center space-x-2 focus:outline-none">
+                        <img src="https://via.placeholder.com/40" alt="User" class="w-10 h-10 rounded-full shadow-lg border-2 border-blue-500">
+                        <div class="flex flex-col">
+                            <span class="text-white font-semibold">{{ Auth::user()->name }}</span>
+                            @if (Auth::user()->role == 'admin')
+                            <span class="text-blue-200 text-xs">Admin</span>
+                            @elseif (Auth::user()->role == 'user')
+                            <span class="text-blue-200 text-xs">User</span>
+                            @endif
+                        </div>
+                        <i class="fas fa-chevron-down ml-2 text-white transition-transform duration-300 transform" :class="{ 'rotate-180': dropdownOpen }"></i>
                     </button>
-                    <div class="absolute right-0 hidden w-48 mt-2 bg-white rounded-md shadow-lg" id="profileDropdown">
-                        <a href="/profile" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Profil Saya</a>
-                        {{-- <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Pengaturan</a> --}}
-                        <form method="POST" action="{{ route('logout') }}">
+
+                    <!-- Dropdown Menu -->
+                    <div id="profileDropdown" class="absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-lg py-4 transform transition-all duration-300 ease-in-out scale-95 opacity-0 hidden"
+                        x-show="dropdownOpen" @click.away="dropdownOpen = false">
+                        <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 transition duration-200 flex items-center">
+                            <i class="fas fa-cog text-green-500 mr-2"></i> Settings
+                        </a>
+                        <form method="POST" action="{{ route('logout') }}" class="mt-2">
                             @csrf
-                            <button type="submit" class="w-full px-4 py-2 text-left text-gray-800 hover:bg-gray-100">
-                                Logout
+                            <button type="submit" class="block w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-100 transition duration-200 flex items-center">
+                                <i class="fas fa-sign-out-alt text-red-500 mr-2"></i> Logout
                             </button>
                         </form>
                     </div>
@@ -162,29 +172,21 @@
                 </p>
                 <div class="space-x-4 mt-2 md:mt-0">
                     <a href="#" class="text-white hover:text-blue-300 transition duration-200">Privacy Policy</a>
-                    <a href="#" class="text-white hover:text-blue-300 transition duration-200">Terms of
-                        Service</a>
+                    <a href="#" class="text-white hover:text-blue-300 transition duration-200">Terms of Service</a>
                     <a href="#" class="text-white hover:text-blue-300 transition duration-200">Contact Us</a>
                 </div>
                 <div class="space-x-4 mt-4 md:mt-0 flex justify-center">
-                    <!-- Facebook Icon -->
-                    <a href="https://www.facebook.com/polinema/?locale=id_ID"
-                        class="text-blue-200 hover:text-white transition duration-200">
+                    <!-- Social Media Links -->
+                    <a href="https://www.facebook.com/polinema/?locale=id_ID" class="text-blue-200 hover:text-white transition duration-200">
                         <i class="fab fa-facebook-f"></i>
                     </a>
-                    <!-- Twitter Icon -->
-                    <a href="https://x.com/polinema_campus"
-                        class="text-blue-400 hover:text-white transition duration-200">
+                    <a href="https://x.com/polinema_campus" class="text-blue-400 hover:text-white transition duration-200">
                         <i class="fab fa-twitter"></i>
                     </a>
-                    <!-- Instagram Icon -->
-                    <a href="https://www.instagram.com/polinema_campus/"
-                        class="text-pink-500 hover:text-white transition duration-200">
+                    <a href="https://www.instagram.com/polinema_campus/" class="text-pink-500 hover:text-white transition duration-200">
                         <i class="fab fa-instagram"></i>
                     </a>
-                    <!-- LinkedIn Icon -->
-                    <a href="https://www.linkedin.com/school/polinema-joss/?originalSubdomain=id"
-                        class="text-blue-300 hover:text-white transition duration-200">
+                    <a href="https://www.linkedin.com/school/polinema-joss/?originalSubdomain=id" class="text-blue-300 hover:text-white transition duration-200">
                         <i class="fab fa-linkedin-in"></i>
                     </a>
                 </div>
@@ -197,6 +199,8 @@
     <script>
         const sidebar = document.getElementById('sidebar');
         const hamburger = document.getElementById('hamburger');
+        const profileButton = document.getElementById('profileButton');
+        const profileDropdown = document.getElementById('profileDropdown');
         const webinarToggle = document.getElementById('webinarToggle');
         const webinarDropdown = document.getElementById('webinarDropdown');
         const arrow = document.getElementById('arrow');
@@ -212,16 +216,17 @@
             arrow.classList.toggle('rotate-180');
         });
 
-        // Toggle profile dropdown
-        profileButton.addEventListener('click', () => {
+        profileButton.addEventListener('click', (event) => {
+            event.stopPropagation();
             profileDropdown.classList.toggle('hidden');
+            profileDropdown.classList.toggle('opacity-0');
+            profileDropdown.classList.toggle('scale-95');
         });
 
-        // Close dropdown when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!profileButton.contains(e.target) && !profileDropdown.contains(e.target)) {
-                profileDropdown.classList.add('hidden');
-            }
+        document.addEventListener('click', () => {
+            profileDropdown.classList.add('hidden');
+            profileDropdown.classList.add('opacity-0');
+            profileDropdown.classList.add('scale-95');
         });
     </script>
 </body>

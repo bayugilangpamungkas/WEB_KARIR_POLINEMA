@@ -27,4 +27,15 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function progresses()
+{
+    return $this->hasMany(Progress::class);
+}
+// User.php
+public function materis()
+{
+    return $this->belongsToMany(Materi::class, 'progress')->withPivot('is_completed');
+}
+
 }

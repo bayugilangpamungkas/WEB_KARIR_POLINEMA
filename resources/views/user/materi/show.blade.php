@@ -15,7 +15,7 @@
     </div>
 
     <!-- Main content section -->
-    <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6">
+    <div class="bg-white dark:bg-gray-800 shadow-xl rounded-lg p-8 space-y-8">
         <!-- Display Materi Description -->
         <div class="mb-6">
             <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-2">Deskripsi</h3>
@@ -55,6 +55,17 @@
             </div>
         </div>
         @endif
+    </div>
+
+    <!-- Button to mark as completed, aligned to the right -->
+    <div class="flex justify-end mt-6">
+        <form action="{{ route('user.materi.complete', $materi->id) }}" method="POST">
+            @csrf
+            <button type="submit"
+                class="py-2 px-6 bg-gradient-to-r from-blue-500 to-indigo-500 text-white rounded-full hover:bg-blue-600 focus:outline-none shadow-lg transition duration-300 transform hover:scale-105">
+                Tandai Selesai
+            </button>
+        </form>
     </div>
 </div>
 @endsection

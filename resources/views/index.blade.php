@@ -30,13 +30,13 @@
                                 <a class="text-gray-500 transition hover:text-gray-500/75" href="#"> Beranda </a>
                             </li>
                             <li>
-                                <a class="text-gray-500 transition hover:text-gray-500/75" href="#"> Lowongan </a>
+                                <a class="text-gray-500 transition hover:text-gray-500/75" href="/lowongan"> Lowongan </a>
                             </li>
                             <li>
                                 <a class="text-gray-500 transition hover:text-gray-500/75" href="/topik"> Karir </a>
                             </li>
                             <li>
-                                <a class="text-gray-500 transition hover:text-gray-500/75" href="#"> Webinar </a>
+                                <a class="text-gray-500 transition hover:text-gray-500/75" href="/webinars"> Webinar </a>
                             </li>
                         </ul>
                     </nav>

@@ -6,17 +6,17 @@
         <h2 class="text-3xl sm:text-4xl font-bold text-gray-800 tracking-wide">
             📋 Daftar Webinar
         </h2>
-        <a href="{{ route('admin.webinars.create') }}" 
-           class="bg-gradient-to-r from-indigo-500 to-purple-600 text-white px-6 py-3 rounded-xl 
+        <a href="{{ route('admin.webinars.create') }}"
+            class="bg-gradient-to-r from-indigo-500 to-purple-600 text-white px-6 py-3 rounded-xl 
                   shadow-lg transition duration-300">
             Tambah Webinar Baru
         </a>
     </div>
 
     @if(session('success'))
-        <div class="bg-green-500 text-white p-4 rounded-lg mb-8 shadow-md animate-fadeIn">
-            {{ session('success') }}
-        </div>
+    <div class="bg-green-500 text-white p-4 rounded-lg mb-8 shadow-md animate-fadeIn">
+        {{ session('success') }}
+    </div>
     @endif
 
     <div class="overflow-hidden rounded-2xl shadow-lg bg-white">
@@ -27,35 +27,44 @@
                     <th class="py-4 px-6 border-b text-left">Tanggal</th>
                     <th class="py-4 px-6 border-b text-left">Narasumber</th>
                     <th class="py-4 px-6 border-b text-left">Link</th>
+                    <th class="py-4 px-6 border-b text-left">Poster</th> <!-- New column -->
                     <th class="py-4 px-6 border-b text-center">Aksi</th>
                 </tr>
             </thead>
             <tbody class="text-gray-800 text-sm divide-y divide-gray-100">
                 @foreach($webinars as $webinar)
-                    <tr class="hover:bg-indigo-50 transition duration-300">
-                        <td class="py-4 px-6">{{ $webinar->judul_web }}</td>
-                        <td class="py-4 px-6">{{ $webinar->tanggal_web }}</td>
-                        <td class="py-4 px-6">{{ $webinar->narasumber }}</td>
-                        <td class="py-4 px-6">
-                            <a href="{{ $webinar->link_web }}" target="_blank" class="text-blue-500 hover:text-blue-700">
-                                {{ $webinar->link_web }}
+                <tr class="hover:bg-indigo-50 transition duration-300">
+                    <td class="py-4 px-6">{{ $webinar->judul_web }}</td>
+                    <td class="py-4 px-6">{{ $webinar->tanggal_web }}</td>
+                    <td class="py-4 px-6">{{ $webinar->narasumber }}</td>
+                    <td class="py-4 px-6">
+                        <a href="{{ $webinar->link_web }}" target="_blank" class="text-blue-500 hover:text-blue-700">
+                            {{ $webinar->link_web }}
+                        </a>
+                    </td>
+                    <td class="py-4 px-6">
+                        <!-- Display poster image if available -->
+                        @if($webinar->poster_web)
+                        <img src="{{ asset('storage/' . $webinar->poster_web) }}" alt="Poster" class="w-16 h-16 object-cover rounded-lg">
+                        @else
+                        <span class="text-gray-500">Tidak Ada</span>
+                        @endif
+                    </td>
+                    <td class="py-4 px-6 text-center">
+                        <div class="flex justify-center space-x-4">
+                            <a href="{{ route('admin.webinars.edit', $webinar->id) }}"
+                                class="bg-yellow-400 text-white px-3 py-2 text-sm rounded-lg hover:bg-yellow-500 shadow-md transition duration-300">
+                                Edit
                             </a>
-                        </td>
-                        <td class="py-4 px-6 text-center">
-                            <div class="flex justify-center space-x-4">
-                                <a href="{{ route('admin.webinars.edit', $webinar->id) }}" 
-                                   class="bg-yellow-400 text-white px-3 py-2 text-sm rounded-lg hover:bg-yellow-500 shadow-md transition duration-300">
-                                    Edit
-                                </a>
-                                <button onclick="openModal({{ $webinar->id }})" 
-                                        class="bg-red-500 text-white px-3 py-2 text-sm rounded-lg hover:bg-red-600 shadow-md transition duration-300">
-                                    Hapus
-                                </button>
-                            </div>
-                        </td>
-                    </tr>
+                            <button onclick="openModal({{ $webinar->id }})"
+                                class="bg-red-500 text-white px-3 py-2 text-sm rounded-lg hover:bg-red-600 shadow-md transition duration-300">
+                                Hapus
+                            </button>
+                        </div>
+                    </td>
+                </tr>
                 @endforeach
-            </tbody>            
+            </tbody>
         </table>
     </div>
 </div>

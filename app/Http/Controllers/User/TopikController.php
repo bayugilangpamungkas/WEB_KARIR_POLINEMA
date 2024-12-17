@@ -4,7 +4,9 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\Topik;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TopikController extends Controller
 {
@@ -18,8 +20,24 @@ class TopikController extends Controller
     // Menampilkan detail topik dan daftar materi yang terkait
     public function show($id)
     {
-        $topik = Topik::findOrFail($id); // Mencari topik berdasarkan ID
+        $topik = Topik::with('materis')->findOrFail($id); // Ambil topik beserta materi
         $materis = $topik->materis; // Mendapatkan materi terkait topik ini
-        return view('user.materi.index', compact('topik', 'materis'));
+        $userId = Auth::id(); // Ambil ID user yang sedang login
+    
+        // Total materi dalam topik
+        $totalMateri = $materis->count();
+    
+        // Hitung materi yang selesai berdasarkan tabel progress
+        $completedMateri = DB::table('progress')
+            ->where('user_id', $userId)
+            ->whereIn('materi_id', $materis->pluck('id')) // Materi-materi dalam topik
+            ->where('is_completed', 1)
+            ->count();
+    
+        // Hitung progres dalam persentase
+        $progress = $totalMateri > 0 ? round(($completedMateri / $totalMateri) * 100, 2) : 0;
+    
+        // Kirim data ke view
+        return view('user.materi.index', compact('topik', 'materis', 'progress'));
     }
-}
+    }

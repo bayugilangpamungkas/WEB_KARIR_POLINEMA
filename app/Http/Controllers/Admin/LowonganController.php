@@ -3,113 +3,117 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Lowongan;
 use Illuminate\Http\Request;
-use App\Models\Lowongan; // Menggunakan model Lowongan
+use Illuminate\Support\Facades\Storage;
 
 class LowonganController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    // Menampilkan daftar lowongan
     public function index()
     {
-        // Mengambil semua data lowongan dan mengurutkannya berdasarkan yang terbaru
-        $lowongans = Lowongan::latest()->get(); // Menampilkan data lowongan terbaru
-        return view('admin.lowongan.index', compact('lowongans')); // Mengirim data lowongan ke view
+        $lowonganList = Lowongan::all();
+        return view('admin.lowongan.index', compact('lowonganList'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    // Menampilkan formulir pembuatan lowongan
     public function create()
     {
-        // Menampilkan form untuk menambah lowongan
         return view('admin.lowongan.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    // Menyimpan lowongan baru
     public function store(Request $request)
     {
-        // Validasi data input dari user
         $request->validate([
-            'title' => 'required|max:255',
-            'company' => 'required|max:255',  // Validasi perusahaan
-            'deskripsi' => 'required',        // Validasi deskripsi
-            'tanggal_berakhir' => 'required|date',
+            'fotoLowongan' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'judul' => 'required|string|max:255',
+            'deskripsi' => 'required|string',
+            'googleMapsLink' => 'nullable|url',
+            'posisi' => 'required|string|max:255',
+            'namaPerusahaan' => 'required|string|max:255',
+            'kontak' => 'nullable|string|max:255',
+            'tanggalMulai' => 'required|date',
+            'tanggalSelesai' => 'required|date',
         ]);
 
-        // Menyimpan data lowongan
-        Lowongan::create([
-            'title' => $request->title,
-            'company' => $request->company,
-            'description' => $request->deskripsi,  // Pastikan menggunakan 'description' sesuai kolom di database
-            'tanggal_berakhir' => $request->tanggal_berakhir,
-        ]);
+        $lowongan = new Lowongan();
+        if ($request->hasFile('fotoLowongan')) {
+            $path = $request->file('fotoLowongan')->store('lowongan_photos', 'public');
+            $lowongan->foto_url = Storage::url($path);
+        }
 
-        return redirect()->route('admin.lowongan.index')->with('success', 'Lowongan berhasil ditambahkan');
+        $lowongan->judul = $request->judul;
+        $lowongan->deskripsi = $request->deskripsi;
+        $lowongan->google_maps_link = $request->googleMapsLink;
+        $lowongan->posisi = $request->posisi;
+        $lowongan->nama_perusahaan = $request->namaPerusahaan;
+        $lowongan->kontak = $request->kontak;
+        $lowongan->tanggal_mulai = $request->tanggalMulai;
+        $lowongan->tanggal_selesai = $request->tanggalSelesai;
+        $lowongan->save();
+
+        return redirect()->route('admin.lowongan.index')->with('success', 'Lowongan berhasil dibuat.');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show($id)
-    {
-        // Mengambil data lowongan berdasarkan ID atau mengembalikan error 404 jika tidak ditemukan
-        $lowongan = Lowongan::findOrFail($id);
-        return view('admin.lowongan.show', compact('lowongan')); // Menampilkan detail lowongan
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
+    // Menampilkan formulir edit lowongan
     public function edit($id)
     {
-        // Mengambil data lowongan berdasarkan ID atau mengembalikan error 404 jika tidak ditemukan
         $lowongan = Lowongan::findOrFail($id);
-        return view('admin.lowongan.edit', compact('lowongan')); // Menampilkan form untuk mengedit lowongan
+        return view('admin.lowongan.edit', compact('lowongan'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+    // Memperbarui data lowongan
     public function update(Request $request, $id)
     {
-        // Validasi data input dari user
-        $request->validate([
-            'title' => 'required|string|max:255',  // Pastikan 'title' tidak kosong dan tidak lebih dari 255 karakter
-            'deskripsi' => 'required|string',      // Deskripsi wajib ada
-            'tanggal_berakhir' => 'required|date', // Pastikan tanggal berakhir valid
-        ]);
-
-        // Mengambil data lowongan berdasarkan ID
         $lowongan = Lowongan::findOrFail($id);
 
-        // Update data lowongan di database
-        $lowongan->update([
-            'title' => $request->title,
-            'company' => $request->company,  // Pastikan input ini ada di form
-            'description' => $request->deskripsi,  // Update deskripsi
-            'tanggal_berakhir' => $request->tanggal_berakhir,  // Update tanggal berakhir
+        $request->validate([
+            'fotoLowongan' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'judul' => 'required|string|max:255',
+            'deskripsi' => 'required|string',
+            'googleMapsLink' => 'nullable|url',
+            'posisi' => 'required|string|max:255',
+            'namaPerusahaan' => 'required|string|max:255',
+            'kontak' => 'nullable|string|max:255',
+            'tanggalMulai' => 'required|date',
+            'tanggalSelesai' => 'required|date',
         ]);
 
-        // Redirect ke halaman daftar lowongan dengan pesan sukses
+        // Update foto jika ada file baru
+        if ($request->hasFile('fotoLowongan')) {
+            if ($lowongan->foto_url) {
+                Storage::delete('public/' . $lowongan->foto_url);
+            }
+            $path = $request->file('fotoLowongan')->store('lowongan_photos', 'public');
+            $lowongan->foto_url = Storage::url($path);
+        }
+
+        $lowongan->update([
+            'judul' => $request->judul,
+            'deskripsi' => $request->deskripsi,
+            'google_maps_link' => $request->googleMapsLink,
+            'posisi' => $request->posisi,
+            'nama_perusahaan' => $request->namaPerusahaan,
+            'kontak' => $request->kontak,
+            'tanggal_mulai' => $request->tanggalMulai,
+            'tanggal_selesai' => $request->tanggalSelesai,
+        ]);
+
         return redirect()->route('admin.lowongan.index')->with('success', 'Lowongan berhasil diperbarui.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+    // Menghapus lowongan dari database
     public function destroy($id)
     {
-        // Mengambil data lowongan berdasarkan ID
         $lowongan = Lowongan::findOrFail($id);
 
-        // Hapus data lowongan dari database
-        $lowongan->delete();
+        // Hapus foto jika ada
+        if ($lowongan->foto_url) {
+            Storage::delete('public/' . $lowongan->foto_url);
+        }
 
-        // Redirect ke halaman daftar lowongan dengan pesan sukses
+        $lowongan->delete();
         return redirect()->route('admin.lowongan.index')->with('success', 'Lowongan berhasil dihapus.');
     }
 }
