@@ -49,7 +49,7 @@
 
 <body class="bg-gray-100 flex min-h-screen font-body">
     <!-- Sidebar -->
-    <aside id="sidebar" class="bg-gradient-to-r from-blue-500 to-blue-800 text-white w-64 p-6 shadow-lg space-y-4">
+    <aside id="sidebar" class="bg-gradient-to-tl from-slate-800 to-indigo-900 text-white w-64 p-6 shadow-lg space-y-4">
         <div class="flex items-center justify-center mb-8">
             <img src="/asset/images/logo_polinema.png" alt="Logo" class="w-20 h-20 rounded-full logo">
         </div>
@@ -58,18 +58,18 @@
 
         <nav class="space-y-4">
             <a href="{{ route('admin.dashboard') }}"
-                class="flex items-center py-2 px-4 rounded-lg bg-blue-700 hover:bg-blue-600 text-white transition duration-200 ease-in-out transform hover:scale-105 shadow-sm font-medium">
+                class="flex items-center py-2 px-4 rounded-lg bg-blue-900 hover:bg-sky-700 text-white transition duration-200 ease-in-out transform hover:scale-105 shadow-sm font-medium">
                 <i class="fas fa-home mr-2 text-blue-300"></i>
                 <span>Dashboard</span>
             </a>
-            <a href="{{ route('admin.manageuser.index') }}" class="flex items-center py-2 px-4 rounded-lg bg-blue-700 hover:bg-blue-600 text-white transition duration-200 ease-in-out transform hover:scale-105 shadow-sm font-medium">
+            <a href="{{ route('admin.manageuser.index') }}" class="flex items-center py-2 px-4 rounded-lg bg-blue-900 hover:bg-sky-700 text-white transition duration-200 ease-in-out transform hover:scale-105 shadow-sm font-medium">
                 <i class="fas fa-users mr-2 text-green-300"></i>
                 <span>List Peserta</span>
             </a>
             <hr class="border-t border-blue-300 opacity-50">
             <div>
                 <button id="webinarToggle"
-                    class="w-full flex items-center justify-between py-2 px-4 rounded-lg bg-blue-700 hover:bg-blue-600 text-white transition duration-200 ease-in-out transform hover:scale-105 shadow-sm font-medium">
+                    class="w-full flex items-center justify-between py-2 px-4 rounded-lg bg-blue-900 hover:bg-sky-700 text-white transition duration-200 ease-in-out transform hover:scale-105 shadow-sm font-medium">
                     <div class="flex items-center">
                         <i class="fas fa-graduation-cap mr-2 text-yellow-300"></i>
                         <span>Karir</span>
@@ -79,19 +79,19 @@
             </div>
             <div id="webinarDropdown" class="hidden pl-6 space-y-2 mt-2">
                 <a href="{{ route('admin.topik.index') }}"
-                    class="block py-2 px-4 rounded-lg bg-blue-600 hover:bg-blue-500 text-white transition font-medium">
+                    class="block py-2 px-4 rounded-lg bg-blue-800 hover:bg-sky-600 text-white transition font-medium">
                     <i class="fas fa-book mr-2 text-purple-300"></i> Topik
                 </a>
                 <a href="{{ route('admin.materi.index') }}"
-                    class="block py-2 px-4 rounded-lg bg-blue-600 hover:bg-blue-500 text-white transition font-medium">
+                    class="block py-2 px-4 rounded-lg bg-blue-800 hover:bg-sky-600 text-white transition font-medium">
                     <i class="fas fa-file-alt mr-2 text-pink-300"></i> Materi
                 </a>
             </div>
             <hr class="border-t border-blue-300 opacity-50">
-            <a href="{{ route('admin.lowongan.index') }}" class="flex items-center py-2 px-4 rounded-lg bg-blue-700 hover:bg-blue-600 text-white transition duration-200 ease-in-out transform hover:scale-105 shadow-sm font-medium">
+            <a href="{{ route('admin.lowongan.index') }}" class="flex items-center py-2 px-4 rounded-lg bg-blue-900 hover:bg-sky-700 text-white transition duration-200 ease-in-out transform hover:scale-105 shadow-sm font-medium">
                 <i class="fas fa-briefcase mr-2 text-red-300"></i> Lowongan
             </a>
-            <a href="{{ route('admin.webinars.index') }}" class="flex items-center py-2 px-4 rounded-lg bg-blue-700 hover:bg-blue-600 text-white">
+            <a href="{{ route('admin.webinars.index') }}" class="flex items-center py-2 px-4 rounded-lg bg-blue-900 hover:bg-sky-700 text-white">
                 <i class="fas fa-calendar-plus mr-2 text-yellow-300"></i> Webinar
             </a>
         </nav>

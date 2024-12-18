@@ -5,7 +5,7 @@
     <!-- Cards Section -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
         <a href="{{ route('admin.manageuser.index') }}">
-            <div class="bg-gradient-to-r from-primary to-secondary h-32 rounded-xl flex justify-center items-center shadow-2xl hover:shadow-xl transition duration-2000">
+            <div class="bg-gradient-to-br from-red-400 to-orange-900 h-32 rounded-xl flex justify-center items-center shadow-2xl hover:shadow-xl transition duration-2000">
                 <div class="text-center">
                     <i class="fas fa-user text-white text-2xl mb-2"></i>
                     <span class="block text-lg font-semibold text-white">Pengguna</span>
@@ -14,7 +14,7 @@
             </div>
         </a>
         <a href="{{ route('admin.lowongan.index') }}">
-            <div class="bg-gradient-to-r from-primary to-secondary h-32 rounded-xl flex justify-center items-center shadow-2xl hover:shadow-xl transition duration-2000">
+            <div class="bg-gradient-to-br from-emerald-500 to-green-900 h-32 rounded-xl flex justify-center items-center shadow-2xl hover:shadow-xl transition duration-2000">
                 <div class="text-center">
                     <i class="fas fa-briefcase text-white text-2xl mb-2"></i>
                     <span class="block text-lg font-semibold text-white">Lowongan</span>
@@ -23,7 +23,7 @@
             </div>
         </a>
         <a href="{{ route('admin.webinars.index')}}">
-            <div class="bg-gradient-to-r from-primary to-secondary h-32 rounded-xl flex justify-center items-center shadow-2xl hover:shadow-xl transition duration-2000">
+            <div class="bg-gradient-to-br from-amber-500 to-yellow-800 h-32 rounded-xl flex justify-center items-center shadow-2xl hover:shadow-xl transition duration-2000">
                 <div class="text-center">
                     <i class="fas fa-video text-white text-2xl mb-2"></i>
                     <span class="block text-lg font-semibold text-white">Webinar</span>
