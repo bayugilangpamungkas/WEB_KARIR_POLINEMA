@@ -5,11 +5,11 @@
     <!-- Page Header Section -->
     <div class="flex flex-col sm:flex-row justify-between items-center mb-8 space-y-4 sm:space-y-0">
         <h2 class="text-3xl sm:text-4xl font-bold text-gray-800 tracking-wide">
-            📋 Daftar List User
+            📋 Daftar Pengguna
         </h2>
         <a href="{{ route('admin.manageuser.create') }}"
-            class="bg-gradient-to-r from-indigo-500 to-purple-600 text-white px-6 py-3 rounded-xl 
-                shadow-lg transition duration-300">
+            class="bg-gradient-to-br from-purple-400 to-indigo-500 text-sm font-semibold text-white px-6 py-3 rounded-xl shadow-lg transition duration-300 flex items-center gap-2">
+            <i class="fas fa-plus"></i>
             Tambah User Baru
         </a>
     </div>
@@ -26,7 +26,7 @@
         <table class="min-w-full table-auto border-collapse">
             <thead>
                 <tr class="bg-gradient-to-r from-gray-100 to-gray-200 text-gray-600 uppercase text-sm tracking-wider font-semibold">
-                    <th class="py-4 px-6 border-b text-left">ID</th>
+                    <th class="py-4 px-6 border-b text-left">No</th>
                     <th class="py-4 px-6 border-b text-left">NIM</th>
                     <th class="py-4 px-6 border-b text-left">Nama User</th>
                     <th class="py-4 px-6 border-b text-left">Email</th>
@@ -36,7 +36,7 @@
             <tbody class="text-gray-800 text-sm divide-y divide-gray-100">
                 @foreach($users as $user)
                 <tr class="hover:bg-indigo-50 transition duration-300">
-                    <td class="py-4 px-6">{{ $user->id }}</td>
+                    <td class="py-4 px-6">{{ $loop->iteration }}</td>
                     <td class="py-4 px-6">{{ $user->nim }}</td>
                     <td class="py-4 px-6">{{ $user->name }}</td>
                     <td class="py-4 px-6">{{ $user-> email }}</td>
