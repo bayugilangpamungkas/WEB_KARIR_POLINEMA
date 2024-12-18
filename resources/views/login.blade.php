@@ -10,9 +10,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
-<body class="h-screen">
-    <section class="h-full flex items-center justify-center">
-        <div class="block bg-white shadow-lg h-full lg:h-auto lg:flex lg:flex-wrap">
+<body class="min-h-screen">
+    <section class="flex min-h-screen w-full">
+        <div class="bg-white h-auto lg:h-auto lg:flex lg:flex-wrap">
             <!-- Left container -->
             <div class="px-4 md:px-0 lg:w-6/12 flex items-center justify-center">
                 <div class="md:mx-6 md:p-8">
@@ -20,9 +20,16 @@
                     <div class="text-left">
                         <img class="mx-auto md:w-28 w-full h-auto" src="{{ asset('/asset/images/logo-polinema.webp') }}"
                             alt="polinema">
-                        <h4 class="mt-6 pb-1 text-xl font-semibold">Sign In</h4>
-                        <p class="mt-1 mb-7 text-gray-500">Please login to your account</p>
+                        <h4 class="mt-4 text-xl font-semibold">Sign In</h4>
+                        <p class="mt-1 mb-5 text-gray-500">Please login to your account</p>
                     </div>
+
+                    <!-- Login failed message -->
+                    @if ($errors->has('email'))
+                    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-2 rounded mb-3">
+                        <p>{{ $errors->first('email') }}</p>
+                    </div>
+                    @endif
 
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
@@ -33,7 +40,7 @@
                             </span>
                             <input type="text"
                                 class="border p-2 pl-8 w-full rounded focus:border-blue-500 focus:ring focus:ring-blue-200 focus:outline-none"
-                                id="email" name="email" placeholder="Email" required />
+                                id="email" name="email" value="{{ old('email') }}" placeholder="Email" required />
                         </div>
 
                         <!-- Password input -->
@@ -44,10 +51,16 @@
                             <input type="password"
                                 class="border p-2 pl-8 w-full rounded focus:border-blue-500 focus:ring focus:ring-blue-200 focus:outline-none"
                                 id="password" name="password" placeholder="Password" required />
+
+                            <button type="button"
+                                class="absolute right-2 top-2.5 text-gray-500"
+                                id="togglePassword">
+                                <i class="fas fa-eye" id="eyeIcon"></i>
+                            </button>
                         </div>
 
                         <!-- Submit button -->
-                        <div class="mb-8 text-center">
+                        <div class="mb-5 text-center">
                             <button type="submit"
                                 class="mb-3 w-full rounded px-6 py-2.5 text-xs font-medium uppercase leading-normal text-white shadow-md bg-gradient-to-r from-violet-600 to-indigo-600">
                                 Log in
@@ -55,10 +68,10 @@
                         </div>
 
                         <!-- Register button -->
-                        <div class="flex items-center justify-between pb-4">
+                        <div class="flex items-center justify-between pb-1">
                             <p class="mb-0 me-2">Don't have an account?</p>
                             <a href="/register">
-                                <button type="button" class="rounded border-2 px-6 py-2 text-xs font-medium uppercase leading-normal text-danger border-violet-400">
+                                <button type="button" class="rounded border-2 px-6 py-2 text-xs font-medium uppercase leading-normal border-violet-400 hover:bg-violet-200">
                                     Register
                                 </button>
                             </a>
@@ -80,6 +93,24 @@
             </div>
         </div>
     </section>
+
+    <script>
+        const togglePassword = document.getElementById('togglePassword');
+        const passwordInput = document.getElementById('password');
+        const eyeIcon = document.getElementById('eyeIcon');
+
+        togglePassword.addEventListener('click', function() {
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                eyeIcon.classList.remove('fa-eye');
+                eyeIcon.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                eyeIcon.classList.remove('fa-eye-slash');
+                eyeIcon.classList.add('fa-eye');
+            }
+        });
+    </script>
 </body>
 
 </html>

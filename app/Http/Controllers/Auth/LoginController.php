@@ -10,10 +10,17 @@ class LoginController extends Controller
 {
     public function login(Request $request)
     {
+        $messages = [
+            'email.required' => 'Email tidak boleh kosong.',
+            'email.email' => 'Format email tidak valid.',
+            'password.required' => 'Password tidak boleh kosong.',
+        ];
+
+        // Validasi input
         $credentials = $request->validate([
             'email' => 'required|email',
             'password' => 'required',
-        ]);
+        ], $messages);
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
@@ -28,7 +35,7 @@ class LoginController extends Controller
             }
         }
 
-        // Jika login gagal, kembalikan error
+        // Jika login gagal, kembalikan error custom
         return back()->withErrors([
             'email' => 'Email atau password salah.',
         ])->withInput($request->only('email'));
