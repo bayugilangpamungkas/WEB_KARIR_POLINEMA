@@ -11,30 +11,11 @@ use App\Http\Controllers\User\MateriController;
 use App\Http\Controllers\User\LowonganController as UserLowonganController;
 use App\Http\Controllers\User\WebinarController as UserWebinarController;
 
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\UserManagementController;
-use App\Http\Controllers\Admin\LowonganController; // Menambahkan LowonganController
+use App\Http\Controllers\Admin\LowonganController;
 use App\Http\Controllers\Admin\WebinarController;
-
-
-
-
-// Route untuk halaman utama
-// Route::get('/', function () {
-//     return view('index');
-// });
-
-// Route untuk dashboard, hanya bisa diakses oleh pengguna yang terautentikasi dan terverifikasi
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
-
-// Routes untuk profile, hanya bisa diakses oleh pengguna yang terautentikasi
-// Route::middleware('auth')->group(function () {
-//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-// });
 
 // Autentikasi Laravel
 require __DIR__ . '/auth.php';
@@ -66,7 +47,7 @@ Route::post('/register', [RegisteredUserController::class, 'store']);
 
 // Routes untuk admin, menggunakan middleware AdminMiddleware
 Route::middleware(['auth', AdminMiddleware::class])->group(function () {
-    Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+    Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 
     Route::prefix('admin')->group(function () {
         // Routes untuk topik oleh admin

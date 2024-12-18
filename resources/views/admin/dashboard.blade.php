@@ -4,27 +4,33 @@
 <div class="flex-1 p-6">
     <!-- Cards Section -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
-        <div class="bg-gradient-to-r from-primary to-secondary h-32 rounded-xl flex justify-center items-center shadow-2xl hover:shadow-xl transition duration-2000">
-            <div class="text-center">
-                <i class="fas fa-user text-white text-2xl mb-2"></i>
-                <span class="block text-lg font-semibold text-white">Pengguna</span>
-                <span class="block text-sm text-white">250 Total</span>
+        <a href="{{ route('admin.manageuser.index') }}">
+            <div class="bg-gradient-to-r from-primary to-secondary h-32 rounded-xl flex justify-center items-center shadow-2xl hover:shadow-xl transition duration-2000">
+                <div class="text-center">
+                    <i class="fas fa-user text-white text-2xl mb-2"></i>
+                    <span class="block text-lg font-semibold text-white">Pengguna</span>
+                    <span class="block text-sm text-white">{{ $totalPengguna }} Total</span>
+                </div>
             </div>
-        </div>
-        <div class="bg-gradient-to-r from-primary to-secondary h-32 rounded-xl flex justify-center items-center shadow-2xl hover:shadow-xl transition duration-2000">
-            <div class="text-center">
-                <i class="fas fa-chart-line text-white text-2xl mb-2"></i>
-                <span class="block text-lg font-semibold text-white">Kinerja</span>
-                <span class="block text-sm text-white">Naik 15%</span>
+        </a>
+        <a href="{{ route('admin.lowongan.index') }}">
+            <div class="bg-gradient-to-r from-primary to-secondary h-32 rounded-xl flex justify-center items-center shadow-2xl hover:shadow-xl transition duration-2000">
+                <div class="text-center">
+                    <i class="fas fa-briefcase text-white text-2xl mb-2"></i>
+                    <span class="block text-lg font-semibold text-white">Lowongan</span>
+                    <span class="block text-sm text-white">{{ $totalLowongan }} Total</span>
+                </div>
             </div>
-        </div>
-        <div class="bg-gradient-to-r from-primary to-secondary h-32 rounded-xl flex justify-center items-center shadow-2xl hover:shadow-xl transition duration-2000">
-            <div class="text-center">
-                <i class="fas fa-dollar-sign text-white text-2xl mb-2"></i>
-                <span class="block text-lg font-semibold text-white">Pendapatan</span>
-                <span class="block text-sm text-white">$120K</span>
+        </a>
+        <a href="{{ route('admin.webinars.index')}}">
+            <div class="bg-gradient-to-r from-primary to-secondary h-32 rounded-xl flex justify-center items-center shadow-2xl hover:shadow-xl transition duration-2000">
+                <div class="text-center">
+                    <i class="fas fa-video text-white text-2xl mb-2"></i>
+                    <span class="block text-lg font-semibold text-white">Webinar</span>
+                    <span class="block text-sm text-white">{{ $totalWebinar }} Total</span>
+                </div>
             </div>
-        </div>
+        </a>
     </div>
 
     <!-- Progress Section -->
