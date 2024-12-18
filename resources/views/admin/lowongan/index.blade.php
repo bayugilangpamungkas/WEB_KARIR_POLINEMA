@@ -5,8 +5,8 @@
 <div class="container mx-auto py-10 px-4">
     <!-- Title and Add Job Vacancy Button -->
     <div class="flex justify-between items-center mb-8">
-        <h1 class="text-4xl font-extrabold text-blue-600 font-display">📋 Daftar Lowongan</h1>
-        <a href="{{ route('admin.lowongan.create') }}" class="bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl flex items-center gap-2">
+        <h1 class="text-4xl font-extrabold font-display text-gray-800">📋 Daftar Lowongan</h1>
+        <a href="{{ route('admin.lowongan.create') }}" class="bg-gradient-to-br from-purple-400 to-indigo-500 text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl flex items-center gap-2">
             <i class="fas fa-plus-circle"></i> Tambah Lowongan
         </a>
     </div>

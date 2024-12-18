@@ -7,9 +7,8 @@
             📋 Daftar Webinar
         </h2>
         <a href="{{ route('admin.webinars.create') }}"
-            class="bg-gradient-to-r from-indigo-500 to-purple-600 text-white px-6 py-3 rounded-xl 
-                  shadow-lg transition duration-300">
-            Tambah Webinar Baru
+            class="bg-gradient-to-br from-purple-400 to-indigo-500 text-sm font-semibold text-white px-6 py-3 rounded-xl shadow-lg transition duration-300 flex items-center gap-2">
+            <i class="fas fa-plus"></i>Tambah Webinar Baru
         </a>
     </div>
 
@@ -50,15 +49,17 @@
                         <span class="text-gray-500">Tidak Ada</span>
                         @endif
                     </td>
-                    <td class="py-4 px-6 text-center">
+                    <td class="py-4 px-4">
                         <div class="flex justify-center space-x-4">
                             <a href="{{ route('admin.webinars.edit', $webinar->id) }}"
-                                class="bg-yellow-400 text-white px-3 py-2 text-sm rounded-lg hover:bg-yellow-500 shadow-md transition duration-300">
-                                Edit
+                                class="bg-yellow-400 text-white px-4 py-2 rounded-lg hover:bg-yellow-500 shadow-md transition duration-300 flex items-center space-x-2">
+                                <i class="fas fa-edit text-xl"></i>
+                                <span>Edit</span>
                             </a>
                             <button onclick="openModal({{ $webinar->id }})"
-                                class="bg-red-500 text-white px-3 py-2 text-sm rounded-lg hover:bg-red-600 shadow-md transition duration-300">
-                                Hapus
+                                class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 shadow-md transition duration-300 flex items-center space-x-2">
+                                <i class="fas fa-trash-alt text-xl"></i>
+                                <span>Hapus</span>
                             </button>
                         </div>
                     </td>
